@@ -1,0 +1,14 @@
+MR. BORTH TIENDA — CÓMO SUBIRLA A NETLIFY
+
+1. Entra a app.netlify.com con tu cuenta.
+2. Sitios > "Add new site" > "Deploy manually".
+3. Arrastra la carpeta "mrborth-tienda" completa (no el .zip) a la zona de carga.
+4. Netlify te da un enlace (por ejemplo algo.netlify.app). En "Site configuration > Change site name" puedes ponerle un nombre como mrborth-tienda.
+5. Para actualizar precios o catálogo: reemplaza catalogo.json y vuelve a arrastrar la carpeta en "Deploys".
+
+INSTALAR COMO APP EN EL CELULAR
+- Android (Chrome): abrir el enlace > menú ⋮ > "Instalar app" / "Agregar a pantalla principal".
+- iPhone (Safari): abrir el enlace > Compartir > "Agregar a inicio".
+
+DÓLAR DEL DÍA
+La tienda consulta cada día el dólar oficial de Bolivia (bo.dolarapi.com) y recalcula los precios en Bs de las botellas a pedido (precio en USD, que ya incluye los $15, × dólar del día). Decants y botellas en stock mantienen su precio fijo en Bs. Si no hay conexión usa el último valor guardado o el respaldo 11,69 (se cambia en index.html, línea TC_FALLBACK).

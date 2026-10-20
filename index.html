@@ -1,4 +1,5 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c0b09"><meta name="description" content="Perfumes originales, decants y botellas selladas. Elige tu esencia. Define tu presencia."><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style>body{margin:0}</style></head><body><title>Tienda Mr. Borth</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c0b09"><meta name="description" content="Perfumes originales, decants y botellas selladas. Elige tu esencia. Define tu presencia."><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style>body{margin:0}
+</style></head><body><title>Tienda Mr. Borth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
@@ -114,7 +115,7 @@ section.block{padding-block:40px 8px}
 .offer p{margin:0;font-size:.95rem}
 .offer p span{color:var(--mute);font-size:.85rem;display:block;margin-top:4px}
 
-.filter-line{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:14px 0 12px;font-size:.85rem;color:var(--mute)}
+.filter-line{scroll-margin-top:calc(140px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;gap:10px;margin:14px 0 12px;font-size:.85rem;color:var(--mute)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.profiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .card{position:relative;background:var(--char);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -270,8 +271,8 @@ form{display:grid;gap:14px}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
 /* ====== Añadidos v7: fotos reales, escenario 3D con notas animadas, ofertas, modo anuncio, test ====== */
-.ph{display:block;width:100%;aspect-ratio:1;background-color:#fff;background-repeat:no-repeat}
-.spot{border-radius:50%;-webkit-mask:radial-gradient(circle,#000 52%,transparent 70%);mask:radial-gradient(circle,#000 52%,transparent 70%)}
+.ph{display:block;width:100%;aspect-ratio:1;background-repeat:no-repeat}
+.spot{filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}
 .brand .logo-mark{height:48px;width:auto;filter:drop-shadow(0 2px 6px rgba(200,163,90,.25))}
 .brand{cursor:pointer}
 .tc-line{font-size:.72rem;color:var(--mute);text-align:center;padding-block:6px;border-bottom:1px solid var(--line)}
@@ -293,7 +294,7 @@ form{display:grid;gap:14px}
 .stage .cv.back{z-index:0}.stage .cv.front{z-index:3}
 .stage .halo{position:absolute;left:50%;top:50%;width:calc(var(--W)*1.9);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);z-index:0;
   background:radial-gradient(circle,rgba(255,236,196,.28),rgba(200,163,90,.10) 40%,transparent 66%);pointer-events:none}
-.stage .scene{position:relative;z-index:1;width:var(--W);aspect-ratio:1;transform-style:preserve-3d;transform:rotateX(var(--py,0deg)) rotateY(var(--px,0deg));transition:transform .35s ease-out}
+.stage .scene{position:relative;z-index:1;width:var(--W);aspect-ratio:1;transform-style:preserve-3d;transition:transform .35s ease-out}
 .stage .btl{position:absolute;inset:0}
 .stage .shadow{position:absolute;left:50%;top:calc(50% + var(--W)*.5);width:calc(var(--W)*.55);height:14px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.7),transparent 70%);z-index:0}
 .slide .bottle-stage{inset:4% 0 auto;height:56%}
@@ -324,7 +325,7 @@ form{display:grid;gap:14px}
 .rslide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) auto;
   padding:calc(64px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) calc(96px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
   background:radial-gradient(120% 80% at 50% 30%,var(--c1,#2a2414) 0%,#0b0a08 72%)}
-.rslide .blob{position:absolute;width:70vmax;aspect-ratio:1;border-radius:50%;filter:blur(60px);opacity:.35;pointer-events:none;background:var(--c2,#5a4d2a);left:-20vmax;top:40%}
+.rslide .blob{position:absolute;width:70vmax;aspect-ratio:1;border-radius:50%;opacity:.45;pointer-events:none;background:radial-gradient(circle,var(--c2,#5a4d2a),transparent 68%);left:-20vmax;top:40%}
 .rslide .stage{--W:min(54vw,270px,30svh)}
 .rinfo{position:relative;z-index:2;max-width:560px;width:100%;margin-inline:auto;padding-right:58px;display:flex;flex-direction:column;gap:6px}
 .rinfo h2{font-size:clamp(1.9rem,8vw,3.2rem);line-height:1.02}
@@ -370,10 +371,10 @@ form{display:grid;gap:14px}
   @keyframes up{from{opacity:0;transform:translateY(18px)}}
   .card .pic .ph{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
   .card:hover .pic .ph{transform:scale(1.06) translateY(-4px)}
-  .stage .btl{animation:bfloat 6.5s ease-in-out infinite}
+  .stage.play .btl{animation:bfloat 6.5s ease-in-out infinite}
   @keyframes bfloat{0%,100%{transform:translateY(0) rotateY(-14deg)}50%{transform:translateY(-14px) rotateY(14deg)}}
-  .stage .halo{animation:hpulse 5s ease-in-out infinite}@keyframes hpulse{50%{transform:translate(-50%,-50%) scale(1.08);opacity:.8}}
-  .stage .shadow{animation:shd 6.5s ease-in-out infinite}@keyframes shd{50%{transform:translateX(-50%) scale(.8);opacity:.6}}
+  .stage.play .halo{animation:hpulse 5s ease-in-out infinite}@keyframes hpulse{50%{transform:translate(-50%,-50%) scale(1.08);opacity:.8}}
+  .stage.play .shadow{animation:shd 6.5s ease-in-out infinite}@keyframes shd{50%{transform:translateX(-50%) scale(.8);opacity:.6}}
   .rslide .blob{animation:drift 14s ease-in-out infinite alternate}@keyframes drift{to{transform:translate(40vmax,-30vh) scale(1.2)}}
   .rslide:not(.on) *{animation-play-state:paused!important}
   .rslide.on .rinfo>*{animation:fadeup .7s cubic-bezier(.2,.7,.2,1) both}
@@ -389,9 +390,96 @@ form{display:grid;gap:14px}
   .rec{animation:fadeup .5s both;animation-delay:calc(var(--i,0) * 60ms)}
   .brand .logo-mark{animation:logoin 1.2s cubic-bezier(.2,.8,.2,1) both}@keyframes logoin{from{opacity:0;transform:rotateY(90deg)}}
 }
+/* ====== v8: escenario liviano (CSS 3D), ofertas en tela de oro, ruedas de entrega, asesoría express ====== */
+.stage{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.stage .scene{transform-style:preserve-3d}
+.stage .btl{transform-style:preserve-3d;z-index:1}
+.stage .btl .ph{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
+.ring{position:absolute;left:50%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(72deg);--dur:18s;--dir:normal}
+.ring.r0{top:20%;--r:calc(var(--W)*.56)}
+.ring.r1{top:50%;--r:calc(var(--W)*.64);--dur:22s;--dir:reverse}
+.ring.r2{top:80%;--r:calc(var(--W)*.6);--dur:26s}
+.slot{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:rotateZ(var(--t)) translateX(var(--r))}
+.nt{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap;pointer-events:none;
+  transform:translate(-50%,-50%) rotateZ(calc(var(--t) * -1)) rotateX(-72deg)}
+.nt i{font-style:normal;font-size:calc(var(--W)*.13);line-height:1;filter:drop-shadow(0 0 8px rgba(var(--tc),.85))}
+.nt b{font:600 .66rem/1.1 var(--f-body);color:#f2ecdd;background:rgba(12,11,9,.62);border:1px solid rgba(var(--tc),.45);padding:2px 7px;border-radius:99px;max-width:8em;overflow:hidden;text-overflow:ellipsis}
+.ring.r0 .nt{--tc:255,222,140}.ring.r1 .nt{--tc:244,160,180}.ring.r2 .nt{--tc:214,150,96}
+.stage .tap{position:absolute;left:50%;top:2px;transform:translateX(-50%);z-index:4;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);background:rgba(12,11,9,.6);border:1px solid rgba(200,163,90,.4);padding:4px 10px;border-radius:99px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.stage.play .tap{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .stage.play .ring{animation:ringspin var(--dur) linear infinite var(--dir)}
+  .stage.play .nt{animation:counter var(--dur) linear infinite var(--dir)}
+  .stage.play .nt i{animation:nbob 2.4s ease-in-out infinite;animation-delay:calc(var(--k) * -.4s)}
+  @keyframes ringspin{from{transform:rotateX(72deg) rotateZ(0deg)}to{transform:rotateX(72deg) rotateZ(360deg)}}
+  @keyframes counter{from{transform:translate(-50%,-50%) rotateZ(calc(var(--t) * -1)) rotateZ(0deg) rotateX(-72deg)}to{transform:translate(-50%,-50%) rotateZ(calc(var(--t) * -1)) rotateZ(-360deg) rotateX(-72deg)}}
+  @keyframes nbob{50%{transform:translateY(-6px) scale(1.08)}}
+  .slide.on .stage:not(.play) .tap,.rslide.on .stage:not(.play) .tap,.d-hero .stage:not(.play) .tap{animation:tapb 2.2s ease-in-out infinite}@keyframes tapb{50%{opacity:.55}}
+}
+
+/* tela de oro */
+.gold-wrap{display:grid;gap:14px;perspective:900px}
+@media (min-width:720px){.gold-wrap{grid-template-columns:1fr 1fr}}
+.gold-cloth{position:relative;overflow:hidden;border-radius:18px;padding:18px 18px 16px;color:#2b1a04;isolation:isolate;
+  display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:center;
+  background:linear-gradient(128deg,#6e4a10 0%,#d9b25a 16%,#fff0b3 28%,#c8952f 42%,#7f5714 55%,#e8c66f 70%,#fff3c4 80%,#a5761f 100%);
+  box-shadow:0 18px 38px rgba(0,0,0,.55),0 2px 0 rgba(255,240,190,.5) inset,0 -3px 0 rgba(60,35,5,.35) inset;
+  transform-origin:50% 0;transform:rotateX(3deg)}
+.gold-cloth::before{content:"";position:absolute;inset:0 -96px;z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(70,40,5,.16) 0,rgba(255,250,220,.20) 24px,rgba(70,40,5,.16) 48px);will-change:transform}
+.gold-cloth::after{content:"";position:absolute;top:-40%;bottom:-40%;left:-60%;width:45%;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-18deg) translateX(0)}
+.gc-tag{grid-column:1/-1;font-family:var(--f-display);font-weight:600;font-size:1.5rem;letter-spacing:.06em;line-height:1;color:#3b2304;
+  text-shadow:0 1px 0 rgba(255,246,210,.85),0 -1px 0 rgba(70,40,5,.35)}
+.gc-txt{margin:0;font-size:1rem;font-weight:500;line-height:1.3;color:#2b1a04;text-shadow:0 1px 0 rgba(255,246,210,.6)}
+.gc-pct{font-family:var(--f-display);font-weight:600;font-size:2.6rem;line-height:.9;color:#3b2304;text-shadow:0 2px 0 rgba(255,246,210,.85),0 -1px 0 rgba(70,40,5,.4),0 6px 14px rgba(70,40,5,.35)}
+.gold-cloth.sm{padding:12px 14px}.gold-cloth.sm .gc-tag{font-size:1.1rem}.gold-cloth.sm .gc-pct{font-size:1.9rem}.gold-cloth.sm .gc-txt{font-size:.88rem}
+@media (prefers-reduced-motion:no-preference){
+  .gold-cloth.vis{animation:cloth 7s ease-in-out infinite}
+  .gold-cloth.vis:nth-child(2){animation-delay:-3.5s}
+  .gold-cloth.vis::before{animation:folds 4s linear infinite}
+  .gold-cloth.vis::after{animation:sheen 4.5s ease-in-out infinite}
+  @keyframes cloth{0%,100%{transform:rotateX(6deg) rotateY(-5deg) skewY(.4deg)}50%{transform:rotateX(-4deg) rotateY(5deg) skewY(-.4deg)}}
+  @keyframes folds{to{transform:translateX(48px)}}
+  @keyframes sheen{0%,35%{transform:skewX(-18deg) translateX(0)}75%,100%{transform:skewX(-18deg) translateX(380%)}}
+}
+.promo{background:linear-gradient(110deg,#8a6119,#e9c771 30%,#fff0b3 45%,#c99a3b 60%,#8a6119);color:#2b1a04}
+
+/* ruedas de fecha, hora y paquetería */
+.wheels{display:flex;align-items:stretch;gap:8px}
+.wcol{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.wcol.date{flex:2.2}.wcol.paq{flex:1}
+.wcol small{font-size:.7rem;color:var(--mute);text-transform:uppercase;letter-spacing:.12em;text-align:center}
+.wcol::after{content:"";position:absolute;left:0;right:0;bottom:57px;height:36px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);border-radius:8px;background:rgba(200,163,90,.10);pointer-events:none}
+.wheel{height:150px;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;padding-block:57px;perspective:420px;background:var(--char);border:1px solid var(--line);border-radius:14px;
+  -webkit-mask:linear-gradient(transparent,#000 30%,#000 70%,transparent);mask:linear-gradient(transparent,#000 30%,#000 70%,transparent);overscroll-behavior:contain}
+.wheel::-webkit-scrollbar{display:none}
+.wheel div{height:36px;display:grid;place-items:center;scroll-snap-align:center;font-family:var(--f-mono);font-size:1rem;color:var(--bone);white-space:nowrap;cursor:pointer;transition:color .15s}
+.wcol.date .wheel div,.wcol.paq .wheel div{font-family:var(--f-body);font-size:.92rem}
+.wsep{align-self:flex-end;margin-bottom:62px;font-family:var(--f-mono);color:var(--gold-hi);font-size:1.2rem}
+.wsum{margin:8px 0 0;font-size:.88rem;color:var(--gold-hi)}
+
+/* asesoría express */
+.card .heart{z-index:3}
+.card .pic .badge{max-width:calc(100% - 60px);overflow:hidden;text-overflow:ellipsis}
+.express{border:1px solid var(--gold);border-radius:18px;padding:18px;display:grid;gap:10px;background:radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--gold) 16%,transparent),transparent 60%),var(--char)}
+.express h3{font-size:1.5rem}
+.express p{margin:0;color:var(--mute);font-size:.9rem}
+.xo{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.xo button{background:var(--char-2);border:1px solid var(--line);border-radius:14px;padding:14px 10px;color:var(--bone);display:flex;flex-direction:column;gap:2px;text-align:left}
+.xo button b{font-weight:500}.xo button small{color:var(--mute);font-size:.75rem}
+.xo button:active{border-color:var(--gold)}
+.steps li[data-go]{cursor:pointer}
+.slide{min-height:0;justify-content:flex-start}
+.slide .bottle-stage{position:relative;inset:auto;flex:none;height:clamp(250px,40svh,380px);margin-top:6px}
+.slide .stage{--W:min(46vw,230px,24svh)}
+.slide .copy{background:none;padding-top:4px}
+.rinfo{background:linear-gradient(to top,rgba(0,0,0,.72) 75%,transparent);padding-top:22px;margin-top:-22px;border-radius:14px}
+.rinfo .cta-row .btn{padding:12px 14px;font-size:.92rem;white-space:nowrap}
+@media (max-height:820px){.rslide .stage{--W:min(40vw,200px,22svh)}.rinfo>.feel{display:none}}
 </style>
 
-<div class="promo wrap"><b>3.er decant −15%</b> llevando 2 · <b>3.ª botella −15%</b> con una de hombre y una de mujer · <b>Ofertas −10%</b> en botellas seleccionadas</div>
+<div class="promo wrap"><b>¡OFERTA!</b> Lleva 2 Decant's y el 3ro. −15% · <b>¡OFERTA!</b> Hombre + mujer: −15% en tu 3er. perfume</div>
 <header class="top">
   <div class="wrap">
     <div class="top-in">
@@ -401,7 +489,7 @@ form{display:grid;gap:14px}
         <a class="icon-btn" id="waTop" href="#" target="_blank" rel="noopener" aria-label="Hablar con un asesor por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
       </div>
     </div>
-    <div class="search" id="searchBox"><input id="q" type="search" placeholder="Busca por perfume, marca o nota (ej. vainilla)" autocomplete="off"></div>
+    <div class="search" id="searchBox"><form id="searchForm" role="search" action="#catalogo"><input id="q" type="search" enterkeyhint="search" placeholder="Busca por perfume, marca o nota (ej. vainilla)" autocomplete="off" aria-label="Buscar perfume"></form></div>
   </div>
 </header>
 <div class="tc-line wrap" id="tcLine">Precios en bolivianos según el dólar del día.</div>
@@ -414,16 +502,20 @@ form{display:grid;gap:14px}
 
   <section class="block wrap">
     <div class="offer" style="margin-top:0;grid-template-columns:1fr">
-      <p><span class="eyebrow" style="display:block;margin-bottom:6px">Modo anuncio</span><b style="font-family:var(--f-display);font-weight:400;font-size:1.5rem">Desliza perfume por perfume a pantalla completa</b><span>Cada 10 perfumes aparece una botella con 10% de descuento.</span></p>
+      <p><span class="eyebrow" style="display:block;margin-bottom:6px">Modo anuncio</span><b style="font-family:var(--f-display);font-weight:400;font-size:1.5rem">Desliza perfume por perfume a pantalla completa</b><span>Toca cada perfume para verlo flotar con sus notas olfativas.</span></p>
       <button class="btn btn-gold btn-block" id="reelBtn"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Ver en pantalla completa</button>
     </div>
   </section>
 
   <section class="block wrap" id="ofertas">
     <div class="sec-head">
-      <div><span class="eyebrow">Ofertas del día</span><h3>Botellas con 10% de descuento</h3><p>Botellas selladas de más de Bs 1.500. Cambian cada día.</p></div>
+      <div><span class="eyebrow">Ofertas</span><h3>Se aplican solas en tu carrito</h3></div>
     </div>
-    <div class="offers" id="offers"></div>
+    <div class="gold-wrap">
+      <div class="gold-cloth"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Lleva 2 Decant's y el 3ro.</p><span class="gc-pct">−15%</span></div>
+      <div class="gold-cloth"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Por la compra de un perfume de hombre y otro de mujer tienes −15% en tu 3er. perfume</p><span class="gc-pct">−15%</span></div>
+    </div>
+    <div class="offers" id="offers" hidden></div>
   </section>
 
   <section class="block wrap" id="perfiles">
@@ -441,14 +533,6 @@ form{display:grid;gap:14px}
     <div class="chips" id="contexts"></div>
 
     <div class="chips" id="genders" style="margin-top:10px"></div>
-    <div class="offer" style="margin-top:36px">
-      <div class="big">15%<small>3.er decant</small></div>
-      <p>Lleva 2 decants y el tercero tiene 15% de descuento.<span>Combina 4 ml y 10 ml, y perfumes de distintas familias.</span></p>
-    </div>
-    <div class="offer">
-      <div class="big">15%<small>3.ª botella</small></div>
-      <p>Compra una botella sellada de hombre y una de mujer, y la tercera tiene 15% de descuento.<span>Ideal para regalar en pareja.</span></p>
-    </div>
 
     <div class="filter-line"><span id="resultTxt"></span><button class="link" id="clearF" hidden>Quitar filtros</button></div>
     <div class="grid" id="grid"></div>
@@ -478,17 +562,27 @@ form{display:grid;gap:14px}
     <span class="eyebrow">Compra rápida</span>
     <h3 style="margin:4px 0 14px">Cómo comprar</h3>
     <ol class="steps">
-      <li><div><b>Elige perfume y formato</b><span>Decant de 4 ml, 10 ml o botella sellada.</span></div></li>
-      <li><div><b>Agrégalo al carrito 🛒</b><span>Los descuentos se aplican solos.</span></div></li>
-      <li><div><b>Completa tus datos</b><span>Nombre, edad y tu experiencia con perfumes para asesorarte mejor.</span></div></li>
-      <li><div><b>Envía tu carrito por WhatsApp</b><span>Un asesor confirma disponibilidad, pago y entrega.</span></div></li>
+      <li data-go="catalogo"><div><b>Elige perfume y formato</b><span>Decant de 4 ml, 10 ml o botella sellada.</span></div></li>
+      <li data-go="pedido"><div><b>Agrégalo al carrito 🛒</b><span>Los descuentos se aplican solos.</span></div></li>
+      <li data-go="datos"><div><b>Completa tus datos</b><span>Nombre, edad y tu experiencia con perfumes para asesorarte mejor.</span></div></li>
+      <li data-go="datos"><div><b>Envía tu carrito por WhatsApp</b><span>Un asesor confirma disponibilidad, pago y entrega.</span></div></li>
     </ol>
   </div>
-  <div class="promos">
-    <div class="promo-row"><b class="pct">15%</b><p>En el 3.er decant<span>Al llevar 2 decants, el tercero tiene descuento.</span></p></div>
-    <div class="promo-row"><b class="pct">15%</b><p>En la 3.ª botella sellada<span>Al comprar una de hombre y una de mujer.</span></p></div>
-    <div class="promo-row"><b class="pct">10%</b><p>Ofertas del día<span>Botellas seleccionadas de más de Bs 1.500.</span></p></div>
+  <div class="express" id="express">
+    <span class="eyebrow">Asesoría express</span>
+    <h3>¿Qué perfume deberías usar?</h3>
+    <p>Toca una opción. Usamos tus datos y tus preferencias olfativas para recomendarte al instante.</p>
+    <div class="xo">
+      <button data-x="H"><b>Para él</b><small>Hombre</small></button>
+      <button data-x="M"><b>Para ella</b><small>Mujer</small></button>
+      <button data-x="U"><b>Unisex</b><small>Para compartir</small></button>
+      <button data-x=""><b>Sorpréndeme</b><small>Sin preferencia</small></button>
+    </div>
   </div>
+  <div class="gold-wrap">
+      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Lleva 2 Decant's y el 3ro.</p><span class="gc-pct">−15%</span></div>
+      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Por la compra de un perfume de hombre y otro de mujer tienes −15% en tu 3er. perfume</p><span class="gc-pct">−15%</span></div>
+    </div>
   <div class="stack" style="margin-top:0">
     <button class="btn btn-gold btn-block" id="footCart">🛒 Ver mi carrito</button>
     <a class="btn btn-wa btn-block" id="waFoot" href="#" target="_blank" rel="noopener">Hablar con un asesor</a>
@@ -547,7 +641,8 @@ const CONFIG = {
   marca: "Mr. Borth Luxury Parfums",
   descuentoDecant: 0.15, cadaDecants: 3,      // 15% al 3.er decant (y al 6.º, 9.º…)
   descuentoBotella: 0.15, cadaBotellas: 3,    // 15% a la 3.ª botella si hay una de hombre y una de mujer
-  oferta: 0.10, ofertaMinBs: 1500, ofertaCada: 10, // 1 de cada 10 botellas de más de Bs 1.500 con 10%
+  oferta: 0, ofertaMinBs: 1500, ofertaCada: 10, // oferta diaria −10% desactivada (solo quedan las dos ofertas de 15%)
+  paqueterias: ["Delivery a domicilio","Recojo en punto acordado","Envío por flota","Envío por courier","Entrega personal Mr. Borth"],
   tcRespaldo: 11.69,                          // dólar si no hay conexión
   tcApi: "https://bo.dolarapi.com/v1/dolares/oficial"
 };
@@ -609,6 +704,7 @@ let DATA=[],BY={},SALE=new Set(),SALE_LIST=[];
 let cart=store.get("cart2",[]);   // [{id,fmt,qty}] fmt: d0,d1 (decants) · b0,b1… (botellas)
 let wish=store.get("wish",[]);
 let client=store.get("client",{nombre:"",edad:"",ciudad:"",exp:"",usados:"",ocasion:[],fams:[],entrega:"",pago:"",asesoria:true,notas:""});
+if(!client.when)client.when={f:1,hh:15,mm:0,paq:0};
 let filter={fam:null,ctx:null,g:null,q:""};
 let cartTab="pedido",current=null,selFmt=null,selQty=1,shown=40,TC=CONFIG.tcRespaldo,TC_INFO=null;
 const $=s=>document.querySelector(s);
@@ -637,6 +733,7 @@ function saleFmt(p){return p.botellas.map((b,i)=>"b"+i).find(f=>isSale(p,f))}
 function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function todayBO(){try{return new Date().toLocaleDateString('en-CA',{timeZone:'America/La_Paz'})}catch(e){return new Date().toISOString().slice(0,10)}}
 function pickSales(){
+  if(!CONFIG.oferta){SALE_LIST=[];SALE=new Set();return}
   const d=todayBO();
   const pool=DATA.filter(p=>p.botellas.some(b=>b.bs>CONFIG.ofertaMinBs)).sort((a,b)=>hash(a.id+d)-hash(b.id+d));
   SALE_LIST=pool.slice(0,Math.max(1,Math.ceil(pool.length/CONFIG.ofertaCada)));
@@ -655,7 +752,7 @@ async function loadTC(){
 function applyTC(){
   DATA.forEach(p=>p.botellas.forEach(b=>{if(b.usd)b.bs=Math.round(b.usd*TC)}));
   const f=TC_INFO?new Date((TC_INFO.f||TC_INFO.d).slice(0,10)+"T12:00:00").toLocaleDateString("es-BO",{day:"2-digit",month:"2-digit",year:"numeric"}):null;
-  $("#tcLine").innerHTML=TC_INFO?`Dólar oficial del ${f}${TC_INFO.old?" (último disponible)":""}: <b>Bs ${TC.toFixed(2)}</b> · todos los perfumes en stock`:`Dólar del día <b>Bs ${TC.toFixed(2)}</b> · todos los perfumes en stock`;
+  $("#tcLine").innerHTML=TC_INFO?`Dólar oficial del ${f}${TC_INFO.old?" (último disponible)":""}: <b>Bs ${TC.toFixed(2).replace(".",",")}</b> · todos los perfumes en stock`:`Dólar del día <b>Bs ${TC.toFixed(2).replace(".",",")}</b> · todos los perfumes en stock`;
 }
 
 /* ============ DERIVADOS DEL CATÁLOGO ============ */
@@ -678,7 +775,7 @@ function prep(p){
   p.est=Math.max(2,p.dur-(/toilette|cologne/.test(c)?0:0));
   p.hay=norm([p.nombre,p.marca,p.familia,...p.acordes,...Object.values(p.notas).flat()].join(" "));
 }
-function ph(p,cls){if(!p.sp)return `<span class="ph ${cls||""}"></span>`;const [k,c,r,R]=p.sp;return `<span class="ph ${cls||""}" role="img" aria-label="${esc(p.nombre)} de ${esc(p.marca)}" style="background-image:url(sp${k}.jpg);background-size:1000% ${R*100}%;background-position:${c/9*100}% ${R>1?r/(R-1)*100:0}%"></span>`}
+function ph(p,cls){if(!p.sp)return `<span class="ph ${cls||""}"></span>`;const [k,c,r,R]=p.sp;return `<span class="ph ${cls||""}" role="img" aria-label="${esc(p.nombre)} de ${esc(p.marca)}" style="background-image:url(sp${k}.webp);background-size:1000% ${R*100}%;background-position:${c/9*100}% ${R>1?r/(R-1)*100:0}%"></span>`}
 const tint=(p,str=.35)=>`background:radial-gradient(80% 70% at 50% 40%, ${p.c2}${Math.round(str*255).toString(16).padStart(2,"0")}, transparent 70%), var(--char)`;
 function sims(p,k=6){const n=new Set(Object.values(p.notas).flat());return DATA.filter(x=>x.id!==p.id).map(x=>{let s=0;x.acordes.forEach((a,i)=>{const j=p.acordes.indexOf(a);if(j>=0)s+=(6-i)+(6-j)});Object.values(x.notas).flat().forEach(t=>{if(n.has(t))s+=1});return [s,x]}).sort((a,b)=>b[0]-a[0]).slice(0,k).map(z=>z[1])}
 
@@ -689,70 +786,17 @@ function tiers(p){
   if(!s.length&&!c.length&&!f.length){const A={Dulce:"Vainilla",Fresco:"Bergamota",Frutal:"Manzana",Floral:"Jazmín",Especiado:"Pimienta",Amaderado:"Cedro","Cítrico":"Limón",Cremoso:"Crema",Gourmand:"Caramelo",Atalcado:"Iris","Acuático":"Notas marinas",Verde:"Hojas verdes",Oriental:"Ámbar",Cuero:"Cuero",Ahumado:"Incienso",Moderno:"Almizcle"};const a=p.acordes.map(x=>A[x]).filter(Boolean);s=a.slice(0,2);c=a.slice(2,4);f=a.slice(4,6)}
   return [s.slice(0,4),c.slice(0,4),f.slice(0,4)];
 }
-function stage(p){return `<div class="stage" data-st="${p.id}"><canvas class="cv back"></canvas><div class="halo"></div><div class="shadow"></div><div class="scene"><div class="btl">${ph(p,"spot")}</div></div><canvas class="cv front"></canvas></div>`}
-const TIERC=["255,222,140","244,160,180","214,150,96"];
-const EMO={};
-function emojiBmp(e){
-  if(EMO[e])return EMO[e];
-  const S=96,cv=document.createElement("canvas");cv.width=cv.height=S;const x=cv.getContext("2d");
-  x.font=`${S*.78}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Twemoji Mozilla",sans-serif`;x.textAlign="center";x.textBaseline="middle";
-  x.fillText(e,S/2,S/2+S*.05);return EMO[e]=cv;
+function ringsHTML(p){
+  const T=tiers(p);let k=0;
+  return T.map((arr,t)=>arr.length?`<div class="ring r${t}">${arr.map((nm,i)=>`<div class="slot" style="--t:${Math.round(360*i/arr.length+t*40)}deg"><span class="nt" style="--k:${k++}"><i>${noteIcon(nm)}</i><b>${esc(nm)}</b></span></div>`).join("")}</div>`:"").join("");
 }
-const ENG={act:new Set(),raf:0,last:0};
-function setupStage(el){
-  const p=byId(el.dataset.st);if(!p)return null;
-  const scene=el.querySelector(".scene"),W=scene.offsetWidth||200,dpr=Math.min(2,devicePixelRatio||1);
-  const cw=Math.min(el.clientWidth+W*.6,W*3.1),ch=W*2.05;
-  const cvs=[...el.querySelectorAll("canvas")].map(c=>{c.width=cw*dpr;c.height=ch*dpr;c.style.width=cw+"px";c.style.height=ch+"px";const x=c.getContext("2d");x.setTransform(dpr,0,0,dpr,0,0);return x});
-  const T=tiers(p),notes=[];
-  T.forEach((arr,t)=>arr.forEach((nm,i)=>notes.push({e:noteIcon(nm),nm,t,
-    th:Math.PI*2*i/arr.length+t*.7,w:(t===1?-1:1)*(.62-.12*t),
-    rx:Math.min(cw/2-W*.12,W*(.66+.16*t)),ry:W*(.11+.02*t),y0:W*(-.42+.42*t),
-    sp:Math.random()*6,sw:1.4+Math.random()*1.4,bob:Math.random()*6,tr:[]})));
-  return {el,cvs,notes,W,cw,ch,sz:Math.max(26,Math.min(46,W*.17))};
+function stage(p){
+  return `<div class="stage" data-st="${p.id}" role="button" aria-label="Animar ${esc(p.nombre)} y sus notas olfativas"><div class="halo"></div><div class="shadow"></div><div class="scene"><div class="btl">${ph(p,"spot")}</div></div><span class="tap">✦ Toca el perfume</span></div>`;
 }
-function drawStage(st,dt){
-  const [B,F]=st.cvs,{cw,ch,W,sz}=st,cx=cw/2,cy=ch/2;
-  B.clearRect(0,0,cw,ch);F.clearRect(0,0,cw,ch);
-  const items=[];
-  for(const n of st.notes){
-    n.th+=n.w*dt;n.sp+=n.sw*dt;n.bob+=dt*1.6;
-    const z=Math.sin(n.th),x=cx+n.rx*Math.cos(n.th),y=cy+n.y0+n.ry*z+Math.sin(n.bob)*W*.025;
-    n.tr.push([x,y,z]);if(n.tr.length>26)n.tr.shift();
-    items.push([z,n,x,y]);
-  }
-  // estela: rastro brillante que se desvanece por donde pasó cada nota
-  for(const [z,n] of items){
-    const L=n.tr.length;
-    for(let j=0;j<L-1;j++){const [x,y,zz]=n.tr[j],k=j/L,c=zz>0?F:B;
-      c.globalCompositeOperation="lighter";
-      c.fillStyle=`rgba(${TIERC[n.t]},${(k*k*.42*(zz>0?1:.55)).toFixed(3)})`;
-      c.beginPath();c.arc(x+Math.sin(j*1.7+n.sp)*1.5,y+Math.cos(j*2.3)*1.5,sz*.08+sz*.2*k,0,7);c.fill();
-      c.globalCompositeOperation="source-over";}
-  }
-  items.sort((a,b)=>a[0]-b[0]);
-  for(const [z,n,x,y] of items){
-    const c=z>0?F:B,d=(z+1)/2,s=sz*(.62+.48*d),a=.45+.55*d;
-    c.save();c.globalAlpha=a;c.translate(x,y);c.rotate(Math.sin(n.sp*.7)*.35);c.scale(.35+.65*Math.abs(Math.cos(n.sp)),1);
-    c.shadowColor=`rgba(${TIERC[n.t]},.8)`;c.shadowBlur=14*d;
-    c.drawImage(emojiBmp(n.e),-s/2,-s/2,s,s);c.restore();
-    if(z>-.15){c.save();c.globalAlpha=Math.min(1,(z+.15)*1.6)*.95;c.font=`600 ${Math.round(10+3*d)}px Jost,system-ui,sans-serif`;c.textAlign="center";
-      c.lineWidth=3;c.strokeStyle="rgba(12,11,9,.85)";c.strokeText(n.nm,x,y+s*.62+6);c.fillStyle="#f2ecdd";c.fillText(n.nm,x,y+s*.62+6);c.restore()}
-  }
-}
-function tick(t){
-  const dt=Math.min(.05,(t-(ENG.last||t))/1000);ENG.last=t;
-  ENG.act.forEach(st=>{if(!st.el.isConnected){ENG.act.delete(st);return}drawStage(st,dt)});
-  ENG.raf=ENG.act.size?requestAnimationFrame(tick):0;if(!ENG.raf)ENG.last=0;
-}
-function startStage(el){
-  if(!el)return;if(!el._st||el._st.W!==(el.querySelector(".scene").offsetWidth||200))el._st=setupStage(el);
-  const st=el._st;if(!st)return;
-  if(RM){drawStage(st,0);return}
-  ENG.act.add(st);if(!ENG.raf)ENG.raf=requestAnimationFrame(tick);
-}
-function stopStage(el){if(el&&el._st)ENG.act.delete(el._st)}
-addEventListener("resize",()=>{ENG.act.forEach(st=>{const el=st.el;ENG.act.delete(st);el._st=null;startStage(el)})});
+/* la animación solo corre al tocar el perfume (y se detiene al salir de la vista o cerrar la ficha) */
+function startStage(el){}
+function stopStage(el){if(!el)return;el.classList.remove("play");el.querySelectorAll(".ring").forEach(r=>r.remove());const sc=el.querySelector(".scene");if(sc)sc.style.transform=""}
+function toggleStage(el){if(!el)return;const on=!el.classList.contains("play");document.querySelectorAll(".stage.play").forEach(x=>{if(x!==el)stopStage(x)});if(!on){stopStage(el);return}const p=byId(el.dataset.st);if(p&&!el.querySelector(".ring"))el.querySelector(".scene").insertAdjacentHTML("afterbegin",ringsHTML(p));el.classList.add("play")}
 
 /* ============ HERO ============ */
 function featured(){
@@ -788,7 +832,7 @@ function renderHero(){
   const sl=$("#slides");
   sl.addEventListener("scroll",()=>{const i=Math.round(sl.scrollLeft/sl.clientWidth);document.querySelectorAll("#dots button").forEach((d,j)=>d.classList.toggle("on",i===j))},{passive:true});
   $("#dots").addEventListener("click",e=>{const d=e.target.closest("[data-dot]");if(d)sl.scrollTo({left:sl.clientWidth*+d.dataset.dot,behavior:"smooth"})});
-  const io=new IntersectionObserver(es=>es.forEach(e=>{const s=e.target;s.classList.toggle("on",e.isIntersecting);e.isIntersecting?startStage(s.querySelector(".stage")):stopStage(s.querySelector(".stage"))}),{threshold:.55});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{const s=e.target;s.classList.toggle("on",e.isIntersecting);if(!e.isIntersecting)stopStage(s.querySelector(".stage"))}),{threshold:.55});
   sl.querySelectorAll(".slide").forEach(s=>io.observe(s));
 }
 
@@ -823,7 +867,7 @@ function renderGrid(reset){
   $("#resultTxt").textContent=`${LIST.length} perfume${LIST.length===1?"":"s"}${parts.length?" · "+parts.join(" · "):""}`;
   $("#clearF").hidden=!parts.length;
 }
-function renderOffers(){$("#offers").innerHTML=SALE_LIST.map(card).join("")}
+function renderOffers(){}
 
 /* ============ FICHA DEL PERFUME ============ */
 function meter(label,v,words){return `<div class="meter"><span>${label}</span><div class="bar">${[1,2,3,4,5].map(i=>`<i class="${i<=v?"f":""}"></i>`).join("")}</div><em>${words[v-1]}</em></div>`}
@@ -858,7 +902,7 @@ function renderDetail(){
    <p class="notice">Ficha basada en <a href="${p.parfumo}" target="_blank" rel="noopener" style="color:var(--gold)">Parfumo</a>.</p>`;
   requestAnimationFrame(()=>startStage($("#dBody .stage")));
 }
-function renderDetailKeep(){const y=$("#dBody").scrollTop;renderDetail();$("#dBody").scrollTop=y}
+function renderDetailKeep(){const y=$("#dBody").scrollTop,pl=$("#dBody .stage")?.classList.contains("play");renderDetail();if(pl)toggleStage($("#dBody .stage"));$("#dBody").scrollTop=y}
 
 /* ============ CARRITO Y DESCUENTOS ============ */
 function computeTotals(){
@@ -906,7 +950,7 @@ function renderCart(){
      ${t.nd?`<div class="progress">${t.nd<k?`Agrega <b>${k-t.nd}</b> decant${k-t.nd===1?"":"s"} más y el 3.º tiene 15% de descuento.`:r===0?`Descuento aplicado. Con 3 decants más ganas otro 15%.`:`Descuento aplicado. Te falta${left===1?"":"n"} <b>${left}</b> decant${left===1?"":"s"} para el siguiente 15%.`}<div class="track"><i style="width:${(r===0&&t.nd?k:r)/k*100}%"></i></div></div>`:""}
      ${t.nb?`<div class="progress">${bottleMsg(t)}<div class="track"><i style="width:${t.pair?((t.nb%3===0?3:t.nb%3)/3*100):((+t.hasH + +t.hasM)/3*100)}%"></i></div></div>`:""}
      <div class="totals"><div><span>Subtotal</span><span class="num">${bs(t.sub)}</span></div>${t.ofe?`<div class="d"><span>Ya ahorras con ofertas del día (10%)</span><span class="num">${bs(t.ofe)}</span></div>`:""}${t.discD?`<div class="d"><span>Descuento 3.er decant (15%)</span><span class="num">−${bs(t.discD)}</span></div>`:""}${t.discB?`<div class="d"><span>Descuento 3.ª botella (15%)</span><span class="num">−${bs(t.discB)}</span></div>`:""}<div class="g"><span>Total estimado</span><span class="num">${bs(t.total)}</span></div></div>
-     <p class="notice">El asesor confirma pago y entrega por WhatsApp. Dólar del día: Bs ${TC.toFixed(2)}.</p>
+     <p class="notice">El asesor confirma pago y entrega por WhatsApp. Dólar del día: Bs ${TC.toFixed(2).replace(".",",")}.</p>
      <div class="stack"><button class="btn btn-gold btn-block" data-tab-go="datos">Continuar compra</button></div>`;
   }else if(cartTab==="deseos"){
     if(!wish.length){B.innerHTML=`<div class="empty" style="margin-top:10px">Toca el corazón de cualquier perfume para guardarlo. Te avisamos por WhatsApp cuando entre en descuento.</div>`;return}
@@ -925,6 +969,22 @@ const EXP=["Recién empiezo","Uso 1 o 2 perfumes","Tengo una colección","Colecc
 const ENTREGA=["Recojo en punto acordado","Delivery en mi ciudad","Envío a otro departamento"];
 const PAGO=["QR","Transferencia","Efectivo"];
 function opts(name,list,val,multi){return `<div class="opt-grid">${list.map(o=>`<button type="button" class="opt ${multi?(val.includes(o)?"on":""):(val===o?"on":"")}" data-opt="${name}" data-v="${esc(o)}" data-multi="${multi?1:0}">${o}</button>`).join("")}</div>`}
+/* ---- ruedas de fecha, hora y paquetería ---- */
+const MINS=[0,5,10,15,20,25,30,35,40,45,50,55];
+const DIAS=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],MESES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+function DATES(){const t=new Date(todayBO()+"T12:00:00"),out=[];for(let i=0;i<45;i++){const d=new Date(t);d.setDate(t.getDate()+i);const base=`${DIAS[d.getDay()].slice(0,3)} ${d.getDate()} ${MESES[d.getMonth()]}`;out.push({d,l:i===0?"Hoy · "+base:i===1?"Mañana · "+base:base})}return out}
+function whenText(){const w=client.when||{},ds=DATES(),d=(ds[w.f]||ds[1]).d;return `Entrega: ${DIAS[d.getDay()]} ${d.getDate()} de ${["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"][d.getMonth()]} a las ${String(w.hh??15).padStart(2,"0")}:${String(MINS[w.mm]??0).padStart(2,"0")} · ${CONFIG.paqueterias[w.paq]||CONFIG.paqueterias[0]}`}
+function initWheels(B){
+  const H=36;
+  B.querySelectorAll(".wheel").forEach(wh=>{
+    const k=wh.dataset.w,items=[...wh.children];let raf=0,tm=0;
+    const paint=()=>{raf=0;const c=wh.scrollTop/H;items.forEach((it,i)=>{const d=Math.max(-3,Math.min(3,i-c));it.style.opacity=String(Math.max(.25,1-Math.abs(d)*.3));it.style.color=Math.abs(d)<.5?"var(--gold-hi)":""})};
+    const settle=()=>{const i=Math.max(0,Math.min(items.length-1,Math.round(wh.scrollTop/H)));if(client.when[k]!==i){client.when[k]=i;client.entrega=CONFIG.paqueterias[client.when.paq]||"";store.set("client",client);const w=$("#wsum");if(w)w.textContent=whenText();refreshReview();if(navigator.vibrate)try{navigator.vibrate(8)}catch(e){}}};
+    wh.addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(paint);clearTimeout(tm);tm=setTimeout(settle,130)},{passive:true});
+    wh.addEventListener("click",e=>{const it=e.target.closest(".wheel > div");if(it)wh.scrollTo({top:items.indexOf(it)*H,behavior:RM?"auto":"smooth"})});
+    requestAnimationFrame(()=>{wh.scrollTop=(client.when[k]??0)*H;paint()});
+  });
+}
 function renderForm(B){
   const t=computeTotals();
   B.innerHTML=`<form id="cForm" novalidate>
@@ -938,9 +998,18 @@ function renderForm(B){
    <div class="field"><span class="legend">¿Para qué momentos lo buscas?</span>${opts("ocasion",CONTEXTS,client.ocasion,true)}</div>
    <div class="field"><span class="legend">Familias que te atraen</span>${opts("fams",Object.keys(PROFILES),client.fams,true)}</div>
    <label class="toggle"><input type="checkbox" id="asesoria" ${client.asesoria?"checked":""}><span><b>Quiero una asesoría personalizada</b><span>Te recomendamos perfumes según tu perfil olfativo y tus momentos.</span></span></label>
-   <div class="field"><span class="legend">Entrega</span>${opts("entrega",ENTREGA,client.entrega)}</div>
    <div class="field"><span class="legend">Forma de pago preferida</span>${opts("pago",PAGO,client.pago)}</div>
-   <div class="field"><label for="notas">Notas para el asesor</label><textarea id="notas" placeholder="Horario de entrega, regalo, etc.">${esc(client.notas)}</textarea></div>
+   <div class="field"><span class="legend">Notas para el asesor · ¿cuándo y cómo lo recibes?</span>
+     <div class="wheels">
+       <div class="wcol date"><small>Día y fecha</small><div class="wheel" data-w="f" aria-label="Día y fecha de entrega">${DATES().map(d=>`<div>${d.l}</div>`).join("")}</div></div>
+       <div class="wcol"><small>Hora</small><div class="wheel" data-w="hh" aria-label="Hora">${[...Array(24)].map((_,i)=>`<div>${String(i).padStart(2,"0")}</div>`).join("")}</div></div>
+       <span class="wsep">:</span>
+       <div class="wcol"><small>Min</small><div class="wheel" data-w="mm" aria-label="Minutos">${MINS.map(m=>`<div>${String(m).padStart(2,"0")}</div>`).join("")}</div></div>
+     </div>
+     <div class="wheels" style="margin-top:8px"><div class="wcol paq"><small>Paquetería / entrega</small><div class="wheel" data-w="paq" aria-label="Paquetería">${CONFIG.paqueterias.map(x=>`<div>${esc(x)}</div>`).join("")}</div></div></div>
+     <p class="wsum" id="wsum">${esc(whenText())}</p>
+   </div>
+   <div class="field"><label for="notas">Otras notas para el asesor</label><textarea id="notas" placeholder="Es un regalo, dirección de referencia, etc.">${esc(client.notas)}</textarea></div>
    ${cart.length?`<div class="totals"><div class="g"><span>${t.n} producto${t.n===1?"":"s"}</span><span class="num">${bs(t.total)}</span></div></div>`:`<p class="notice">Tu carrito está vacío. Puedes enviar solo tu solicitud de asesoría.</p>`}
    <button type="submit" class="btn btn-gold btn-block">Revisar mensaje</button>
    <div id="review" hidden>
@@ -960,6 +1029,7 @@ function renderForm(B){
     else{client[k]=client[k]===v?"":v;o.parentNode.querySelectorAll(".opt").forEach(b=>b.classList.toggle("on",b===o&&client[k]===v))}
     store.set("client",client);refreshReview()});
   $("#asesoria").addEventListener("change",readForm);
+  initWheels(B);
   f.addEventListener("submit",e=>{e.preventDefault();readForm();
     let ok=true;
     [["#fN",client.nombre.trim()],["#fE",/^\d{1,2}$/.test(client.edad.trim())],["#fX",client.exp]].forEach(([s,v])=>{$(s).classList.toggle("err",!v);if(!v)ok=false});
@@ -993,9 +1063,9 @@ function orderMessage(){
     L.push("",`Subtotal: ${bs(t.sub)}`);
     if(t.discD)L.push(`Descuento 3.er decant (15%): −${bs(t.discD)}`);
     if(t.discB)L.push(`Descuento 3.ª botella hombre + mujer (15%): −${bs(t.discB)}`);
-    L.push(`*Total estimado: ${bs(t.total)}*`,`Dólar del día: Bs ${TC.toFixed(2)}`);
+    L.push(`*Total estimado: ${bs(t.total)}*`,`Dólar del día: Bs ${TC.toFixed(2).replace(".",",")}`);
   }
-  if(c.entrega)L.push("",`Entrega: ${c.entrega}`);
+  if(c.when)L.push("",whenText());
   if(c.pago)L.push(`Pago preferido: ${c.pago}`);
   if(wish.length)L.push("",`Lista de deseos (avisar si baja de precio): ${wish.filter(byId).map(id=>byId(id).nombre).join(", ")}`);
   if(c.notas.trim())L.push("",`Notas: ${c.notas.trim()}`);
@@ -1051,13 +1121,13 @@ function setupReel(){
 function openReel(base){
   if(!fillIO)setupReel();
   RL=reelList(base);const rs=$("#rs");
-  fillIO.disconnect();actIO.disconnect();ENG.act.forEach(st=>{if(st.el.closest("#rs"))ENG.act.delete(st)});
+  fillIO.disconnect();actIO.disconnect();
   rs.innerHTML=RL.map((p,i)=>`<section class="rslide" data-i="${i}" aria-label="${esc(p.nombre)}"></section>`).join("");
   $("#reel").hidden=false;document.body.classList.add("locked");rs.scrollTop=0;
   rs.querySelectorAll(".rslide").forEach(s=>{fillIO.observe(s);actIO.observe(s)});
   askMotion();
 }
-function closeReel(){$("#reel").hidden=true;$("#rs").innerHTML="";if(fillIO){fillIO.disconnect();actIO.disconnect()}if(!document.querySelector(".sheet.open"))document.body.classList.remove("locked")}
+function closeReel(){if(gyroOn){removeEventListener("deviceorientation",onOri);gyroOn=false;gyro=false}$("#reel").hidden=true;$("#rs").innerHTML="";if(fillIO){fillIO.disconnect();actIO.disconnect()}if(!document.querySelector(".sheet.open"))document.body.classList.remove("locked")}
 function share(p){
   let url="";try{if(/^https?:$/.test(location.protocol))url=location.origin+location.pathname+"#"+p.id}catch(e){}
   const text=`Mira este perfume en ${CONFIG.marca}: ${p.nombre} de ${p.marca}. ${p.feel}`;
@@ -1067,12 +1137,13 @@ function share(p){
 
 /* ============ MOVIMIENTO: PUNTERO Y GIROSCOPIO ============ */
 const root=document.documentElement;
-function setTilt(x,y){root.style.setProperty("--px",(x*22).toFixed(2)+"deg");root.style.setProperty("--py",(-y*14).toFixed(2)+"deg")}
+let tiltRaf=0,tiltXY=[0,0];
+function setTilt(x,y){tiltXY=[x,y];if(tiltRaf)return;tiltRaf=requestAnimationFrame(()=>{tiltRaf=0;const r=$("#reel");if(r.hidden)return;const s=r.querySelector(".rslide.on .scene");if(s)s.style.transform=`rotateX(${(-tiltXY[1]*14).toFixed(1)}deg) rotateY(${(tiltXY[0]*22).toFixed(1)}deg)`})}
 function parallax(e){if(RM||e.pointerType!=="mouse")return;setTilt(e.clientX/innerWidth-.5,e.clientY/innerHeight-.5)}
-let gyro=false;
-function onOri(e){if(e.gamma==null)return;setTilt(Math.max(-1,Math.min(1,e.gamma/30))*.5,Math.max(-1,Math.min(1,(e.beta-45)/30))*.5)}
-function askMotion(){if(gyro||RM)return;gyro=true;try{if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(s=>{if(s==="granted")addEventListener("deviceorientation",onOri)}).catch(()=>{})}else addEventListener("deviceorientation",onOri)}catch(e){}}
-addEventListener("pointermove",parallax,{passive:true});
+let gyro=false,gyroOn=false;
+function onOri(e){if(e.gamma==null||$("#reel").hidden)return;setTilt(Math.max(-1,Math.min(1,e.gamma/30))*.5,Math.max(-1,Math.min(1,(e.beta-45)/30))*.5)}
+function askMotion(){if(gyro||RM)return;gyro=true;try{if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(s=>{if(s==="granted")(gyroOn=true,addEventListener("deviceorientation",onOri,{passive:true}))}).catch(()=>{})}else (gyroOn=true,addEventListener("deviceorientation",onOri,{passive:true}))}catch(e){}}
+
 
 /* ============ TEST DE PERFIL OLFATIVO ============ */
 const QFAM={
@@ -1110,9 +1181,9 @@ function qScore(p,A){
   return {s,why:[...new Set(why)].slice(0,2)};
 }
 function openQuiz(step){
-  if(step===0)QA={};
+  if(step===0){QA={};QX=false}
   const B=$("#qBody"),q=QS[step];
-  if(!q)return quizResults();
+  if(!q||(QX&&q.k!=="fam"&&QA[q.k]!==undefined&&step>QS.findIndex(x=>x.k==="fam")))return quizResults();
   const cur=QA[q.k];
   B.innerHTML=`<div class="stepn">Paso ${step+1} de ${QS.length}</div><div class="pbar"><i style="width:${step/QS.length*100}%"></i></div>
    <h2>${q.t}</h2><p class="sub">${q.s}</p>
@@ -1129,8 +1200,8 @@ function quizResults(){
   RECS=DATA.map(p=>{const r=qScore(p,QA);return r&&{p,...r}}).filter(Boolean).sort((a,b)=>b.s-a.s).slice(0,10);
   const F=QFAM[(QA.fam||[])[0]]||QFAM.fresco;QUIZ_PROFILE=F.perfil;
   const mx=RECS.length?RECS[0].s:1,B=$("#qBody");
-  B.innerHTML=`<div class="stepn">Resultado</div><div class="pbar"><i style="width:100%"></i></div>
-   <div class="profres"><span class="eyebrow">Tu perfil olfativo</span><h2>${F.perfil}</h2><p>${F.txt}</p><p style="margin-top:8px;font-size:.85rem;color:var(--mute)">${(QA.fam||[]).map(k=>QFAM[k].t).join(" · ")}</p></div>
+  B.innerHTML=`<div class="stepn">${QX?"Asesoría express":"Resultado"}</div><div class="pbar"><i style="width:100%"></i></div>
+   <div class="profres"><span class="eyebrow">${client.nombre.trim()?esc(client.nombre.trim().split(" ")[0])+", tu perfil olfativo":"Tu perfil olfativo"}</span><h2>${F.perfil}</h2><p>${F.txt}</p><p style="margin-top:8px;font-size:.85rem;color:var(--mute)">${(QA.fam||[]).map(k=>QFAM[k].t).join(" · ")}</p></div>
    ${RECS.length?`<button class="btn btn-gold btn-block" id="qreel" style="margin-bottom:16px">▶ Ver mis perfumes en pantalla completa</button>
    ${RECS.map((r,i)=>{const fi=fromInfo(r.p);return `<button class="rec" style="--i:${i}" data-open="${r.p.id}"><span class="pic" style="${tint(r.p)}">${ph(r.p,"spot")}</span><span><small>${esc(r.p.marca)}</small><b>${esc(r.p.nombre)}</b><span class="why">${r.why.length?"Por "+r.why.join(" y "):"Afín a tu perfil"}</span><small>${fi?"desde "+bs(fi.v):"Precio a consultar"}${saleFmt(r.p)?" · oferta −10%":""}</small></span><span class="sc">${Math.max(50,Math.round(r.s/mx*98))}%</span></button>`}).join("")}`
    :`<p class="notice">No encontramos perfumes con todas esas condiciones. Cambia el clima o el presupuesto.</p>`}
@@ -1138,6 +1209,19 @@ function quizResults(){
   B.querySelector("#qr").onclick=()=>openQuiz(0);
   const qr=B.querySelector("#qreel");if(qr)qr.onclick=()=>{closeSheets();openReel(RECS.map(r=>r.p))};
   B.scrollTop=0;
+}
+/* ---- asesoría express: usa los datos del cliente y sus preferencias olfativas ---- */
+let QX=false;
+const FAM2Q={"Fresco y cítrico":"fresco","Acuático":"fresco","Floral":"floral","Frutal":"frutal","Dulce y gourmand":"dulce","Especiado y oriental":"especia","Amaderado":"madera","Cuero y ahumado":"madera"};
+function autoAdvice(gen){
+  QX=true;QA={gen};
+  const oc=(client.ocasion||[])[0];QA.mom=oc==="Noche"?"Cita":oc||"Día";
+  QA.clima="todo";
+  QA.int=/Coleccionista|colección/.test(client.exp||"")?"estela":/Recién/.test(client.exp||"")?"sutil":"media";
+  QA.pres="todo";
+  const fam=[...new Set((client.fams||[]).map(f=>FAM2Q[f]).filter(Boolean))].slice(0,3);
+  if(fam.length){QA.fam=fam;openSheet("#quiz");quizResults()}
+  else openQuiz(QS.findIndex(q=>q.k==="fam"));
 }
 function quizMsg(F){
   const lab=k=>{const q=QS.find(x=>x.k===k),v=QA[k];if(Array.isArray(v))return v.map(x=>QFAM[x].t).join(", ");const o=q.o.find(o=>o[0]===v);return o?o[1]:"—"};
@@ -1152,6 +1236,9 @@ let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("sh
 
 document.addEventListener("click",e=>{
   if(e.target.closest("#rs [data-act]"))return;
+  const stg=e.target.closest(".stage");if(stg&&!e.target.closest("button,a")){toggleStage(stg);return}
+  const xo=e.target.closest("[data-x]");if(xo){autoAdvice(xo.dataset.x);return}
+  const go=e.target.closest(".steps [data-go]");if(go){const g=go.dataset.go;if(g==="catalogo")$("#catalogo").scrollIntoView({behavior:RM?"auto":"smooth"});else openCart(g);return}
   const w=e.target.closest("[data-wish]");if(w){toggleWish(w.dataset.wish);return}
   const o=e.target.closest("[data-open]");if(o){openDetail(o.dataset.open);return}
   if(e.target.closest("[data-close]")){closeSheets();return}
@@ -1178,8 +1265,11 @@ $("#reelBtn").addEventListener("click",()=>openReel(LIST.length?LIST:DATA));
 $("#rclose").addEventListener("click",closeReel);
 $("#moreBtn").addEventListener("click",()=>{shown+=40;renderGrid()});
 $("#searchBtn").addEventListener("click",()=>{const b=$("#searchBox");b.classList.toggle("open");if(b.classList.contains("open"))$("#q").focus()});
-$("#q").addEventListener("input",e=>{filter.q=e.target.value;renderGrid(1)});
-$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$("#catalogo").scrollIntoView({behavior:"smooth"})});
+// la búsqueda filtra la grilla del catálogo: llevar al cliente a los resultados para que los vea
+function toResults(){const r=$(".filter-line").getBoundingClientRect();if(r.top<120||r.top>innerHeight*.6)$(".filter-line").scrollIntoView({behavior:RM?"auto":"smooth"})}
+let qT;
+$("#q").addEventListener("input",e=>{filter.q=e.target.value;renderGrid(1);clearTimeout(qT);if(filter.q.trim())qT=setTimeout(toResults,500)});
+$("#searchForm").addEventListener("submit",e=>{e.preventDefault();clearTimeout(qT);filter.q=$("#q").value;renderGrid(1);$("#q").blur();toResults()});
 $("#clearF").addEventListener("click",()=>{filter={fam:null,ctx:null,g:null,q:""};$("#q").value="";renderFilters();renderGrid(1)});
 $("#waTop").href=waLink(`Hola, quiero hablar con un asesor de ${CONFIG.marca}.`);
 $("#waNumTxt").textContent="+591 7754 0510";
@@ -1188,6 +1278,10 @@ $("#logoBtn").addEventListener("click",e=>{e.preventDefault();$("#empresa").scro
 $("#toTop").addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
 $("#footCart").addEventListener("click",()=>openCart("pedido"));
 
+/* ofertas en tela de oro: solo se animan mientras están en pantalla */
+try{const gio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("vis",e.isIntersecting)));document.querySelectorAll(".gold-cloth").forEach(g=>gio.observe(g))}catch(e){document.querySelectorAll(".gold-cloth").forEach(g=>g.classList.add("vis"))}
+/* al salir de la app o cambiar de pestaña se detiene cualquier animación de perfume */
+document.addEventListener("visibilitychange",()=>{if(document.hidden)document.querySelectorAll(".stage.play").forEach(stopStage)});
 /* ============ ARRANQUE ============ */
 $("#grid").innerHTML=`<div class="empty">Cargando catálogo…</div>`;
 Promise.all([fetch("catalogo.json").then(r=>r.json()),loadTC()]).then(([d])=>{

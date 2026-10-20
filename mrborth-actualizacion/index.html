@@ -742,12 +742,13 @@ function pickSales(){
 
 /* ============ DÓLAR DEL DÍA ============ */
 async function loadTC(){
-  const d=todayBO();
-  try{const c=store.get("tc",null);if(c&&c.d===d&&c.v>5){TC=c.v;TC_INFO=c;return}}catch(e){}
+  const d=todayBO(),now=Date.now(),c=store.get("tc",null);
+  /* la copia guardada solo vale si ya es la cotización de hoy y se consultó hace menos de 30 min */
+  if(c&&c.v>5&&(c.f||"").slice(0,10)===d&&now-(c.t||0)<18e5){TC=c.v;TC_INFO=c;return}
   try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),6000);
-    const r=await fetch(CONFIG.tcApi,{signal:ctl.signal,cache:"no-store"});clearTimeout(t);const j=await r.json();const v=+j.venta;
-    if(v>5&&v<60){TC=v;TC_INFO={d,v,f:j.fechaActualizacion||d};store.set("tc",TC_INFO);return}}catch(e){}
-  const c=store.get("tc",null);if(c&&c.v>5){TC=c.v;TC_INFO={...c,old:true}}
+    const r=await fetch(CONFIG.tcApi+"?t="+now,{signal:ctl.signal,cache:"no-store"});clearTimeout(t);const j=await r.json();const v=+j.venta;
+    if(v>5&&v<60){const f=(j.fechaActualizacion||d).slice(0,10);TC=v;TC_INFO={d,v,f,t:now,old:f<d};store.set("tc",TC_INFO);return}}catch(e){}
+  if(c&&c.v>5){TC=c.v;TC_INFO={...c,old:(c.f||c.d||"").slice(0,10)<d}}
 }
 function applyTC(){
   DATA.forEach(p=>p.botellas.forEach(b=>{if(b.usd)b.bs=Math.round(b.usd*TC)}));
@@ -775,7 +776,7 @@ function prep(p){
   p.est=Math.max(2,p.dur-(/toilette|cologne/.test(c)?0:0));
   p.hay=norm([p.nombre,p.marca,p.familia,...p.acordes,...Object.values(p.notas).flat()].join(" "));
 }
-function ph(p,cls){if(!p.sp)return `<span class="ph ${cls||""}"></span>`;const [k,c,r,R]=p.sp;return `<span class="ph ${cls||""}" role="img" aria-label="${esc(p.nombre)} de ${esc(p.marca)}" style="background-image:url(sp${k}.webp);background-size:1000% ${R*100}%;background-position:${c/9*100}% ${R>1?r/(R-1)*100:0}%"></span>`}
+function ph(p,cls){if(!p.sp)return `<span class="ph ${cls||""}"></span>`;const [k,c,r,R]=p.sp;return `<span class="ph ${cls||""}" role="img" aria-label="${esc(p.nombre)} de ${esc(p.marca)}" style="background-image:url(sp${k}.webp?v=2);background-size:1000% ${R*100}%;background-position:${c/9*100}% ${R>1?r/(R-1)*100:0}%"></span>`}
 const tint=(p,str=.35)=>`background:radial-gradient(80% 70% at 50% 40%, ${p.c2}${Math.round(str*255).toString(16).padStart(2,"0")}, transparent 70%), var(--char)`;
 function sims(p,k=6){const n=new Set(Object.values(p.notas).flat());return DATA.filter(x=>x.id!==p.id).map(x=>{let s=0;x.acordes.forEach((a,i)=>{const j=p.acordes.indexOf(a);if(j>=0)s+=(6-i)+(6-j)});Object.values(x.notas).flat().forEach(t=>{if(n.has(t))s+=1});return [s,x]}).sort((a,b)=>b[0]-a[0]).slice(0,k).map(z=>z[1])}
 
@@ -1282,6 +1283,10 @@ $("#footCart").addEventListener("click",()=>openCart("pedido"));
 try{const gio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("vis",e.isIntersecting)));document.querySelectorAll(".gold-cloth").forEach(g=>gio.observe(g))}catch(e){document.querySelectorAll(".gold-cloth").forEach(g=>g.classList.add("vis"))}
 /* al salir de la app o cambiar de pestaña se detiene cualquier animación de perfume */
 document.addEventListener("visibilitychange",()=>{if(document.hidden)document.querySelectorAll(".stage.play").forEach(stopStage)});
+/* si la app quedó abierta de un día para otro (o el dólar aún no era de hoy), al volver se recarga con la cotización nueva */
+const BOOT_DAY=todayBO();
+document.addEventListener("visibilitychange",()=>{if(document.hidden)return;
+  if(todayBO()!==BOOT_DAY||(TC_INFO&&TC_INFO.old&&Date.now()-(TC_INFO.t||0)>18e5))location.reload()});
 /* ============ ARRANQUE ============ */
 $("#grid").innerHTML=`<div class="empty">Cargando catálogo…</div>`;
 Promise.all([fetch("catalogo.json").then(r=>r.json()),loadTC()]).then(([d])=>{

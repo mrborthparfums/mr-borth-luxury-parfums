@@ -1,6 +1,6 @@
 // Mr. Borth Tienda — caché para abrir rápido y sin conexión
-const V='mb-tienda-v7';
-const CORE=['./','index.html','manifest.json','catalogo.json','sp0.jpg','sp1.jpg','sp2.jpg','sp3.jpg','sp4.jpg','sp5.jpg','icons/icon-192.png','logo-mark.png','logo.png'];
+const V='mb-tienda-v9';
+const CORE=['./','index.html','manifest.json','catalogo.json','sp0.webp','sp1.webp','sp2.webp','sp3.webp','sp4.webp','sp5.webp','icons/icon-192.png','logo-mark.png','logo.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{

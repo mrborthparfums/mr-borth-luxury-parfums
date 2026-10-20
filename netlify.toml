@@ -12,6 +12,6 @@
     Cache-Control = "no-cache"
 
 [[headers]]
-  for = "/*.jpg"
+  for = "/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=604800"

@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: tienda móvil de una columna — hero a pantalla completa con frascos 3D, ofertas, perfiles, momentos, grilla; carrito flotante abajo a la derecha que abre un panel inferior; modo anuncio vertical */
+/* Layout: tienda móvil de una columna — hero a pantalla completa con frascos 3D, perfiles, momentos, grilla con ofertas intercaladas cada 10 perfumes; carrito flotante abajo a la derecha que abre un panel inferior; modo anuncio vertical */
 /* Layout: tienda móvil de una columna — hero a pantalla completa con scroll-snap, luego perfiles, momentos, grilla de 2 columnas; carrito flotante abajo a la derecha que abre un panel inferior */
 :root{
   --ink:#0c0b09;      /* fondo */
@@ -36,9 +36,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold)}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
 
-/* Franja promo + cabecera */
-.promo{background:var(--gold);color:var(--ink);font-size:.78rem;font-weight:500;letter-spacing:.04em;text-align:center;padding-block:7px}
-.promo b{font-weight:600}
+/* Cabecera */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone);border-radius:10px}
@@ -271,8 +269,9 @@ form{display:grid;gap:14px}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
 /* ====== Añadidos v7: fotos reales, escenario 3D con notas animadas, ofertas, modo anuncio, test ====== */
-.ph{display:block;width:100%;aspect-ratio:1;background-repeat:no-repeat}
-.spot{filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}
+/* foto completa del frasco (fondo blanco original) dentro de una tarjeta clara */
+.ph{display:block;width:100%;aspect-ratio:1;background:#f7f4ee;border-radius:14px;padding:8%;overflow:hidden}
+.ph img{display:block;width:100%;height:100%;object-fit:contain;border-radius:4px}
 .brand .logo-mark{height:48px;width:auto;filter:drop-shadow(0 2px 6px rgba(200,163,90,.25))}
 .brand{cursor:pointer}
 .tc-line{font-size:.72rem;color:var(--mute);text-align:center;padding-block:6px;border-bottom:1px solid var(--line)}
@@ -280,7 +279,7 @@ form{display:grid;gap:14px}
 
 /* tarjetas con foto */
 .card .pic{background:var(--char)}
-.card .pic .ph{width:92%;margin:auto}
+.card .pic .ph{width:90%;margin:auto auto 5%;align-self:end}
 .card .pic .badge{z-index:2}
 .card .pic .badge.sale{background:var(--sale);color:#1a0d06;border-color:var(--sale);font-weight:600}
 .card .stockb{position:absolute;left:10px;bottom:10px;z-index:2;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:3px 7px;border-radius:99px}
@@ -301,15 +300,6 @@ form{display:grid;gap:14px}
 .d-hero{height:340px;overflow:visible}
 .d-hero .stage{--W:min(52vw,230px)}
 
-/* oferta 10 % */
-.salechip{display:inline-flex;align-items:center;gap:6px;background:var(--sale);color:#1a0d06;font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;width:max-content}
-.salebig{position:absolute;top:calc(74px + env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));z-index:4;text-align:center;pointer-events:none;width:96px;height:96px;border-radius:50%;background:var(--sale);color:#1a0d06;display:grid;place-content:center;transform:rotate(-12deg);box-shadow:0 10px 30px rgba(224,138,99,.45)}
-.salebig b{display:block;font-family:var(--f-display);font-size:34px;line-height:.9}
-.salebig span{color:#1a0d06!important;font-size:.55rem!important;font-weight:600}
-.salebig span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone)}
-.offers{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
-.offers::-webkit-scrollbar{display:none}
-.offers .card{flex:0 0 min(46vw,220px)}
 .qbtn{margin-top:14px}
 
 /* modo anuncio */
@@ -359,7 +349,7 @@ form{display:grid;gap:14px}
 .profres h2{color:var(--gold-hi);margin:4px 0 6px;font-size:1.8rem}
 .profres p{margin:0;color:var(--bone);opacity:.9}
 .rec{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:6px 12px 6px 6px;background:var(--char);text-align:left;width:100%;margin-bottom:8px}
-.rec .pic{width:64px;border-radius:10px;overflow:hidden}
+.rec .pic{width:64px;border-radius:14px;overflow:hidden}
 .rec b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.02rem;line-height:1.2}
 .rec small{display:block;color:var(--mute);font-size:.75rem}
 .rec .why{display:block;font-size:.75rem;color:var(--gold)}
@@ -381,10 +371,8 @@ form{display:grid;gap:14px}
   .rslide.on .rinfo>*:nth-child(2){animation-delay:.08s}.rslide.on .rinfo>*:nth-child(3){animation-delay:.16s}.rslide.on .rinfo>*:nth-child(4){animation-delay:.24s}.rslide.on .rinfo>*:nth-child(5){animation-delay:.32s}.rslide.on .rinfo>*:nth-child(6){animation-delay:.4s}.rslide.on .rinfo>*:nth-child(7){animation-delay:.48s}
   .rslide.on .feelw span{animation:word .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.3s + var(--w) * .22s)}
   @keyframes fadeup{from{opacity:0;transform:translateY(22px)}}
-  @keyframes word{from{opacity:0;transform:translateY(12px) rotateX(70deg);filter:blur(4px)}}
+  @keyframes word{from{opacity:0;transform:translateY(12px) rotateX(70deg)}}
   .rslide.on .stage,.slide.on .stage{animation:zoomin 1s cubic-bezier(.2,.7,.2,1) both}@keyframes zoomin{from{opacity:0;transform:scale(.86)}}
-  .rslide.on .salebig{animation:salein 1s cubic-bezier(.2,.9,.3,1.4) both .2s}@keyframes salein{from{opacity:0;transform:scale(.3) rotate(-60deg)}}
-  .salechip{animation:glow 2.2s ease-in-out infinite}@keyframes glow{50%{box-shadow:0 0 18px rgba(224,138,99,.7)}}
   .hint{animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translate(-50%,-6px)}}
   .qo button{animation:fadeup .45s both;animation-delay:calc(var(--i,0) * 50ms)}
   .rec{animation:fadeup .5s both;animation-delay:calc(var(--i,0) * 60ms)}
@@ -394,7 +382,7 @@ form{display:grid;gap:14px}
 .stage{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .stage .scene{transform-style:preserve-3d}
 .stage .btl{transform-style:preserve-3d;z-index:1}
-.stage .btl .ph{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
+.stage .btl .ph{box-shadow:0 18px 34px rgba(0,0,0,.5)}
 .ring{position:absolute;left:50%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(72deg);--dur:18s;--dir:normal}
 .ring.r0{top:20%;--r:calc(var(--W)*.56)}
 .ring.r1{top:50%;--r:calc(var(--W)*.64);--dur:22s;--dir:reverse}
@@ -402,7 +390,7 @@ form{display:grid;gap:14px}
 .slot{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:rotateZ(var(--t)) translateX(var(--r))}
 .nt{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap;pointer-events:none;
   transform:translate(-50%,-50%) rotateZ(calc(var(--t) * -1)) rotateX(-72deg)}
-.nt i{font-style:normal;font-size:calc(var(--W)*.13);line-height:1;filter:drop-shadow(0 0 8px rgba(var(--tc),.85))}
+.nt i{font-style:normal;font-size:calc(var(--W)*.13);line-height:1;text-shadow:0 0 8px rgba(var(--tc),.85)}
 .nt b{font:600 .66rem/1.1 var(--f-body);color:#f2ecdd;background:rgba(12,11,9,.62);border:1px solid rgba(var(--tc),.45);padding:2px 7px;border-radius:99px;max-width:8em;overflow:hidden;text-overflow:ellipsis}
 .ring.r0 .nt{--tc:255,222,140}.ring.r1 .nt{--tc:244,160,180}.ring.r2 .nt{--tc:214,150,96}
 .stage .tap{position:absolute;left:50%;top:2px;transform:translateX(-50%);z-index:4;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);background:rgba(12,11,9,.6);border:1px solid rgba(200,163,90,.4);padding:4px 10px;border-radius:99px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
@@ -436,14 +424,21 @@ form{display:grid;gap:14px}
 .gold-cloth.sm{padding:12px 14px}.gold-cloth.sm .gc-tag{font-size:1.1rem}.gold-cloth.sm .gc-pct{font-size:1.9rem}.gold-cloth.sm .gc-txt{font-size:.88rem}
 @media (prefers-reduced-motion:no-preference){
   .gold-cloth.vis{animation:cloth 7s ease-in-out infinite}
-  .gold-cloth.vis:nth-child(2){animation-delay:-3.5s}
+  .gold-wrap .gold-cloth.vis:nth-child(2){animation-delay:-3.5s}
   .gold-cloth.vis::before{animation:folds 4s linear infinite}
   .gold-cloth.vis::after{animation:sheen 4.5s ease-in-out infinite}
   @keyframes cloth{0%,100%{transform:rotateX(6deg) rotateY(-5deg) skewY(.4deg)}50%{transform:rotateX(-4deg) rotateY(5deg) skewY(-.4deg)}}
   @keyframes folds{to{transform:translateX(48px)}}
   @keyframes sheen{0%,35%{transform:skewX(-18deg) translateX(0)}75%,100%{transform:skewX(-18deg) translateX(380%)}}
 }
-.promo{background:linear-gradient(110deg,#8a6119,#e9c771 30%,#fff0b3 45%,#c99a3b 60%,#8a6119);color:#2b1a04}
+
+/* anuncios intercalados entre los perfumes (cada 10) */
+.grid .gold-cloth.ad{grid-column:1/-1;margin-block:4px;transform:none}
+.rslide.ad{grid-template-rows:1fr;place-items:center;background:radial-gradient(120% 80% at 50% 40%,#3a2c10 0%,#0b0a08 72%)}
+.rad{width:100%;max-width:460px;display:grid;gap:18px;perspective:900px}
+.rad .gold-cloth{padding:28px 24px 24px;gap:10px 16px}
+.rad .gc-tag{font-size:2.2rem}.rad .gc-txt{font-size:1.25rem}.rad .gc-pct{font-size:3.6rem}
+.rad .eyebrow{text-align:center}
 
 /* ruedas de fecha, hora y paquetería */
 .wheels{display:flex;align-items:stretch;gap:8px}
@@ -479,7 +474,6 @@ form{display:grid;gap:14px}
 @media (max-height:820px){.rslide .stage{--W:min(40vw,200px,22svh)}.rinfo>.feel{display:none}}
 </style>
 
-<div class="promo wrap"><b>¡OFERTA!</b> Lleva 2 Decant's y el 3ro. −15% · <b>¡OFERTA!</b> Hombre + mujer: −15% en tu 3er. perfume</div>
 <header class="top">
   <div class="wrap">
     <div class="top-in">
@@ -505,17 +499,6 @@ form{display:grid;gap:14px}
       <p><span class="eyebrow" style="display:block;margin-bottom:6px">Modo anuncio</span><b style="font-family:var(--f-display);font-weight:400;font-size:1.5rem">Desliza perfume por perfume a pantalla completa</b><span>Toca cada perfume para verlo flotar con sus notas olfativas.</span></p>
       <button class="btn btn-gold btn-block" id="reelBtn"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Ver en pantalla completa</button>
     </div>
-  </section>
-
-  <section class="block wrap" id="ofertas">
-    <div class="sec-head">
-      <div><span class="eyebrow">Ofertas</span><h3>Se aplican solas en tu carrito</h3></div>
-    </div>
-    <div class="gold-wrap">
-      <div class="gold-cloth"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Lleva 2 Decant's y el 3ro.</p><span class="gc-pct">−15%</span></div>
-      <div class="gold-cloth"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Por la compra de un perfume de hombre y otro de mujer tienes −15% en tu 3er. perfume</p><span class="gc-pct">−15%</span></div>
-    </div>
-    <div class="offers" id="offers" hidden></div>
   </section>
 
   <section class="block wrap" id="perfiles">
@@ -580,8 +563,8 @@ form{display:grid;gap:14px}
     </div>
   </div>
   <div class="gold-wrap">
-      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Lleva 2 Decant's y el 3ro.</p><span class="gc-pct">−15%</span></div>
-      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Por la compra de un perfume de hombre y otro de mujer tienes −15% en tu 3er. perfume</p><span class="gc-pct">−15%</span></div>
+      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Lleva 2 Decant's y el 3ro.</p><span class="gc-pct">−10%</span></div>
+      <div class="gold-cloth sm"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">Por la compra de un perfume de hombre y otro de mujer tienes −10% en tu 3er. perfume</p><span class="gc-pct">−10%</span></div>
     </div>
   <div class="stack" style="margin-top:0">
     <button class="btn btn-gold btn-block" id="footCart">🛒 Ver mi carrito</button>
@@ -639,9 +622,9 @@ form{display:grid;gap:14px}
 const CONFIG = {
   whatsapp: "59177540510",
   marca: "Mr. Borth Luxury Parfums",
-  descuentoDecant: 0.15, cadaDecants: 3,      // 15% al 3.er decant (y al 6.º, 9.º…)
-  descuentoBotella: 0.15, cadaBotellas: 3,    // 15% a la 3.ª botella si hay una de hombre y una de mujer
-  oferta: 0, ofertaMinBs: 1500, ofertaCada: 10, // oferta diaria −10% desactivada (solo quedan las dos ofertas de 15%)
+  descuentoDecant: 0.10, cadaDecants: 3,      // 10% al 3.er decant (y al 6.º, 9.º…)
+  descuentoBotella: 0.10, cadaBotellas: 3,    // 10% a la 3.ª botella si hay una de hombre y una de mujer
+  anuncioCada: 10,                            // un anuncio de oferta cada 10 perfumes (se alternan las dos ofertas)
   paqueterias: ["Delivery a domicilio","Recojo en punto acordado","Envío por flota","Envío por courier","Entrega personal Mr. Borth"],
   tcRespaldo: 11.69,                          // dólar si no hay conexión
   tcApi: "https://bo.dolarapi.com/v1/dolares/oficial"
@@ -700,7 +683,7 @@ function noteIcon(n){const k=norm(n);if(iconCache[k])return iconCache[k];for(con
 
 /* ============ ESTADO ============ */
 const store={get(k,d){try{const v=localStorage.getItem("mb_"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("mb_"+k,JSON.stringify(v))}catch(e){}}};
-let DATA=[],BY={},SALE=new Set(),SALE_LIST=[];
+let DATA=[],BY={};
 let cart=store.get("cart2",[]);   // [{id,fmt,qty}] fmt: d0,d1 (decants) · b0,b1… (botellas)
 let wish=store.get("wish",[]);
 let client=store.get("client",{nombre:"",edad:"",ciudad:"",exp:"",usados:"",ocasion:[],fams:[],entrega:"",pago:"",asesoria:true,notas:""});
@@ -714,6 +697,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const waLink=text=>"https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(text);
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PD=Math.round(CONFIG.descuentoDecant*100)+"%",PB=Math.round(CONFIG.descuentoBotella*100)+"%"; // textos de descuento
 const heartSvg=`<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 5 7 5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 16.4 12 21 12 21Z"/></svg>`;
 
 /* ============ PRECIOS, FORMATOS Y OFERTAS ============ */
@@ -721,24 +705,13 @@ function fmtList(p){return [...p.decants.map((d,i)=>"d"+i),...p.botellas.map((b,
 function fmtInfo(p,f){const i=+f.slice(1);return f[0]==="d"?p.decants[i]:p.botellas[i]}
 function fmtName(p,f){const x=fmtInfo(p,f);return x?(f[0]==="d"?"Decant ":"Botella sellada ")+x.ml:"—"}
 const isDecant=f=>f[0]==="d";
-function isSale(p,f){if(f[0]!=="b"||!SALE.has(p.id))return false;const b=fmtInfo(p,f);return !!b&&b.bs>CONFIG.ofertaMinBs}
-function basePrice(p,f){const x=fmtInfo(p,f);return x?x.bs:0}
-function price(p,f){return basePrice(p,f)*(isSale(p,f)?1-CONFIG.oferta:1)}
+function price(p,f){const x=fmtInfo(p,f);return x?x.bs:0}
 function fromInfo(p){
-  if(p.decants.length){const f="d"+p.decants.reduce((m,d,i,a)=>d.bs<a[m].bs?i:m,0);return {f,v:price(p,f),old:null,lbl:fmtName(p,f).toLowerCase()}}
+  if(p.decants.length){const f="d"+p.decants.reduce((m,d,i,a)=>d.bs<a[m].bs?i:m,0);return {f,v:price(p,f),lbl:fmtName(p,f).toLowerCase()}}
   const fs=fmtList(p);if(!fs.length)return null;
-  const f=fs.reduce((m,x)=>price(p,x)<price(p,m)?x:m,fs[0]);return {f,v:price(p,f),old:isSale(p,f)?basePrice(p,f):null,lbl:fmtName(p,f).toLowerCase()}
+  const f=fs.reduce((m,x)=>price(p,x)<price(p,m)?x:m,fs[0]);return {f,v:price(p,f),lbl:fmtName(p,f).toLowerCase()}
 }
-function saleFmt(p){return p.botellas.map((b,i)=>"b"+i).find(f=>isSale(p,f))}
-function hash(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function todayBO(){try{return new Date().toLocaleDateString('en-CA',{timeZone:'America/La_Paz'})}catch(e){return new Date().toISOString().slice(0,10)}}
-function pickSales(){
-  if(!CONFIG.oferta){SALE_LIST=[];SALE=new Set();return}
-  const d=todayBO();
-  const pool=DATA.filter(p=>p.botellas.some(b=>b.bs>CONFIG.ofertaMinBs)).sort((a,b)=>hash(a.id+d)-hash(b.id+d));
-  SALE_LIST=pool.slice(0,Math.max(1,Math.ceil(pool.length/CONFIG.ofertaCada)));
-  SALE=new Set(SALE_LIST.map(p=>p.id));
-}
 
 /* ============ DÓLAR DEL DÍA ============ */
 async function loadTC(){
@@ -776,7 +749,8 @@ function prep(p){
   p.est=Math.max(2,p.dur-(/toilette|cologne/.test(c)?0:0));
   p.hay=norm([p.nombre,p.marca,p.familia,...p.acordes,...Object.values(p.notas).flat()].join(" "));
 }
-function ph(p,cls){if(!p.sp)return `<span class="ph ${cls||""}"></span>`;const [k,c,r,R]=p.sp;return `<span class="ph ${cls||""}" role="img" aria-label="${esc(p.nombre)} de ${esc(p.marca)}" style="background-image:url(sp${k}.webp?v=2);background-size:1000% ${R*100}%;background-position:${c/9*100}% ${R>1?r/(R-1)*100:0}%"></span>`}
+/* foto completa del frasco (img/<id>.jpg, fondo blanco original) dentro de una tarjeta clara */
+function ph(p,eager){const src=p.img||`img/${p.id}.jpg`;return `<span class="ph"><img src="${esc(src)}" alt="${esc(p.nombre)} de ${esc(p.marca)}" width="389" height="389" decoding="async"${eager?"":' loading="lazy"'}></span>`}
 const tint=(p,str=.35)=>`background:radial-gradient(80% 70% at 50% 40%, ${p.c2}${Math.round(str*255).toString(16).padStart(2,"0")}, transparent 70%), var(--char)`;
 function sims(p,k=6){const n=new Set(Object.values(p.notas).flat());return DATA.filter(x=>x.id!==p.id).map(x=>{let s=0;x.acordes.forEach((a,i)=>{const j=p.acordes.indexOf(a);if(j>=0)s+=(6-i)+(6-j)});Object.values(x.notas).flat().forEach(t=>{if(n.has(t))s+=1});return [s,x]}).sort((a,b)=>b[0]-a[0]).slice(0,k).map(z=>z[1])}
 
@@ -791,8 +765,8 @@ function ringsHTML(p){
   const T=tiers(p);let k=0;
   return T.map((arr,t)=>arr.length?`<div class="ring r${t}">${arr.map((nm,i)=>`<div class="slot" style="--t:${Math.round(360*i/arr.length+t*40)}deg"><span class="nt" style="--k:${k++}"><i>${noteIcon(nm)}</i><b>${esc(nm)}</b></span></div>`).join("")}</div>`:"").join("");
 }
-function stage(p){
-  return `<div class="stage" data-st="${p.id}" role="button" aria-label="Animar ${esc(p.nombre)} y sus notas olfativas"><div class="halo"></div><div class="shadow"></div><div class="scene"><div class="btl">${ph(p,"spot")}</div></div><span class="tap">✦ Toca el perfume</span></div>`;
+function stage(p,eager){
+  return `<div class="stage" data-st="${p.id}" role="button" aria-label="Animar ${esc(p.nombre)} y sus notas olfativas"><div class="halo"></div><div class="shadow"></div><div class="scene"><div class="btl">${ph(p,eager)}</div></div><span class="tap">✦ Toca el perfume</span></div>`;
 }
 /* la animación solo corre al tocar el perfume (y se detiene al salir de la vista o cerrar la ficha) */
 function startStage(el){}
@@ -804,21 +778,18 @@ function featured(){
   const own=DATA.filter(p=>p.decants.length).sort((a,b)=>(+b.rating||0)-(+a.rating||0));
   const pick=[],seen=new Set();
   for(const g of ["H","M","H","M","U","H","M","H","M"]){const p=own.find(x=>x.g===g&&!seen.has(x.marca+x.nombre)&&!pick.includes(x));if(p){pick.push(p);seen.add(p.marca+p.nombre)}}
-  if(SALE_LIST.length)pick.push(SALE_LIST[0]);
   return pick;
 }
 function priceRow(p){const fi=fromInfo(p);if(!fi)return `<div class="price-row"><span class="val num">Precio a consultar</span></div>`;
-  const sf=saleFmt(p);
-  if(sf)return `<div class="price-row"><span class="from">${esc(fmtName(p,sf))}</span><span class="val num">${bs(price(p,sf))}</span><span class="old num">${bs(basePrice(p,sf))}</span></div>`;
   return `<div class="price-row"><span class="from">Desde</span><span class="val num">${bs(fi.v)}</span><span class="from">· ${esc(fi.lbl)}</span></div>`}
 function renderHero(){
   const feats=featured();
-  $("#slides").innerHTML=feats.map(p=>`
+  $("#slides").innerHTML=feats.map((p,i)=>`
    <article class="slide">
      <div class="glow" style="background:radial-gradient(70% 55% at 50% 32%, ${p.c2}88, transparent 70%), radial-gradient(120% 80% at 50% 100%, var(--ink) 40%, transparent)"></div>
-     <div class="bottle-stage">${stage(p)}</div>
+     <div class="bottle-stage">${stage(p,i===0)}</div>
      <div class="copy wrap">
-       <div class="tags"><span class="badge gold">En stock</span>${p.fam.slice(0,2).map(f=>`<span class="badge">${f}</span>`).join("")}${saleFmt(p)?`<span class="salechip">Oferta −10%</span>`:""}</div>
+       <div class="tags"><span class="badge gold">En stock</span>${p.fam.slice(0,2).map(f=>`<span class="badge">${f}</span>`).join("")}</div>
        <span class="eyebrow">${esc(p.marca)}</span>
        <h2>${esc(p.nombre)}</h2>
        <p class="feel">${esc(p.feel)}</p>
@@ -845,10 +816,10 @@ function renderFilters(){
   $("#genders").innerHTML=`<button class="chip ${!filter.g?"on":""}" data-gen="">Para todos</button>`+Object.entries(GENDERS).map(([k,v])=>`<button class="chip ${filter.g===k?"on":""}" data-gen="${k}">${v}</button>`).join("");
 }
 function card(p,i){
-  const fi=fromInfo(p),sf=saleFmt(p);
-  const pr=sf?`<span class="num"><small>${esc(fmtName(p,sf))}</small>${bs(price(p,sf))}<span class="old">${bs(basePrice(p,sf))}</span></span>`:fi?`<span class="num"><small>Desde</small>${bs(fi.v)}</span>`:`<span class="num"><small>Precio</small>A consultar</span>`;
+  const fi=fromInfo(p);
+  const pr=fi?`<span class="num"><small>Desde</small>${bs(fi.v)}</span>`:`<span class="num"><small>Precio</small>A consultar</span>`;
   return `<article class="card" style="--i:${Math.min(i||0,20)}">
-   <button class="pic" style="${tint(p)}" data-open="${p.id}" aria-label="Ver ${esc(p.nombre)}">${ph(p,"spot")}<span class="badge ${sf?"sale":""}">${sf?"Oferta −10%":esc(p.concentracion)}</span><span class="stockb">En stock</span></button>
+   <button class="pic" style="${tint(p)}" data-open="${p.id}" aria-label="Ver ${esc(p.nombre)}">${ph(p)}<span class="badge">${esc(p.concentracion)}</span><span class="stockb">En stock</span></button>
    <button class="heart ${wish.includes(p.id)?"on":""}" data-wish="${p.id}" aria-label="Guardar en lista de deseos">${heartSvg}</button>
    <div class="info">
      <span class="house">${esc(p.marca)}</span>
@@ -862,29 +833,42 @@ function renderGrid(reset){
   if(reset)shown=40;
   const q=norm(filter.q.trim());
   LIST=DATA.filter(p=>(!filter.fam||p.fam.includes(filter.fam))&&(!filter.g||p.g===filter.g)&&(!filter.ctx||p.ctx.includes(filter.ctx))&&(!q||q.split(/\s+/).every(t=>p.hay.includes(t))));
-  $("#grid").innerHTML=LIST.length?LIST.slice(0,shown).map(card).join(""):`<div class="empty">No hay perfumes con esa combinación. Prueba otra familia o escríbenos para una recomendación.</div>`;
+  goldOff($("#grid"));
+  $("#grid").innerHTML=LIST.length?withAds(LIST.slice(0,shown)).map((x,i)=>x.ad?adHTML(x.ad):card(x,i)).join(""):`<div class="empty">No hay perfumes con esa combinación. Prueba otra familia o escríbenos para una recomendación.</div>`;
+  goldOn($("#grid"));
   $("#moreBtn").hidden=LIST.length<=shown;$("#moreBtn").textContent=`Ver más perfumes (${LIST.length-shown} más)`;
   const parts=[filter.fam,filter.ctx,filter.g&&GENDERS[filter.g],q&&`“${filter.q}”`].filter(Boolean);
   $("#resultTxt").textContent=`${LIST.length} perfume${LIST.length===1?"":"s"}${parts.length?" · "+parts.join(" · "):""}`;
   $("#clearF").hidden=!parts.length;
 }
-function renderOffers(){}
+/* ---- ofertas intercaladas: después del perfume 10, 20, 30… alternando decants / hombre + mujer ---- */
+const ADS={
+  1:{txt:"Lleva 2 Decant's y el 3ro.",pct:"−"+PD},
+  2:{txt:`Por la compra de un perfume de hombre y otro de mujer tienes −${PB} en tu 3er. perfume`,pct:"−"+PB}
+};
+function withAds(list){const out=[];list.forEach((p,i)=>{out.push(p);const n=i+1;if(n%CONFIG.anuncioCada===0){const k=n/CONFIG.anuncioCada;out.push({ad:k%2?1:2})}});return out}
+function adHTML(k,extra){const a=ADS[k];return `<div class="gold-cloth ad" role="note" aria-label="Oferta"><span class="gc-tag">¡OFERTA!</span><p class="gc-txt">${esc(a.txt)}</p><span class="gc-pct">${a.pct}</span>${extra||""}</div>`}
+/* la tela de oro solo se anima mientras está en pantalla */
+let goldIO=null;
+try{goldIO=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("vis",e.isIntersecting)))}catch(e){}
+function goldOn(root){(root||document).querySelectorAll(".gold-cloth").forEach(g=>goldIO?goldIO.observe(g):g.classList.add("vis"))}
+function goldOff(root){if(goldIO&&root)root.querySelectorAll(".gold-cloth").forEach(g=>goldIO.unobserve(g))}
 
 /* ============ FICHA DEL PERFUME ============ */
 function meter(label,v,words){return `<div class="meter"><span>${label}</span><div class="bar">${[1,2,3,4,5].map(i=>`<i class="${i<=v?"f":""}"></i>`).join("")}</div><em>${words[v-1]}</em></div>`}
-function openDetail(id){current=byId(id);if(!current)return;const fs=fmtList(current);selFmt=saleFmt(current)||fs.find(f=>f==="d1")||fs[0]||null;selQty=1;renderDetail();openSheet("#detail");try{history.replaceState(null,"","#"+id)}catch(e){}}
+function openDetail(id){current=byId(id);if(!current)return;const fs=fmtList(current);selFmt=fs.find(f=>f==="d1")||fs[0]||null;selQty=1;renderDetail();openSheet("#detail");try{history.replaceState(null,"","#"+id)}catch(e){}}
 function renderDetail(){
   const p=current;
   stopStage($("#dBody .stage"));
   $("#dHouse").textContent=p.marca;
   const n=p.notas,rows=[["Salida",n.salida],["Corazón",n.corazon],["Fondo",n.fondo],["Acorde",n.acorde]].filter(r=>r[1]&&r[1].length);
-  const sub=f=>isDecant(f)?(f==="d0"?"Para probarlo unos días":"Uso frecuente, el más pedido"):(isSale(p,f)?"Oferta del día · original, nueva y sellada":"Original, nueva y sellada · en stock");
-  const fmtRow=f=>`<button class="fmt ${selFmt===f?"on":""}" data-fmt="${f}"><span class="rd"></span><span><b>${esc(fmtName(p,f))}</b><span>${sub(f)}</span></span><span class="num">${bs(price(p,f))}${isSale(p,f)?`<span class="old">${bs(basePrice(p,f))}</span>`:""}</span></button>`;
+  const sub=f=>isDecant(f)?(f==="d0"?"Para probarlo unos días":"Uso frecuente, el más pedido"):"Original, nueva y sellada · en stock";
+  const fmtRow=f=>`<button class="fmt ${selFmt===f?"on":""}" data-fmt="${f}"><span class="rd"></span><span><b>${esc(fmtName(p,f))}</b><span>${sub(f)}</span></span><span class="num">${bs(price(p,f))}</span></button>`;
   const fs=fmtList(p);
   $("#dBody").innerHTML=`
    <div class="d-hero" style="${tint(p,.5)}">${stage(p)}</div>
    <div class="d-title">
-     <div class="tags"><span class="badge gold">En stock</span><span class="badge">${GENDERS[p.g]}</span><span class="badge">${esc(p.concentracion)}</span>${saleFmt(p)?`<span class="salechip">Oferta −10%</span>`:""}</div>
+     <div class="tags"><span class="badge gold">En stock</span><span class="badge">${GENDERS[p.g]}</span><span class="badge">${esc(p.concentracion)}</span></div>
      <h2>${esc(p.nombre)}</h2>
      <p class="feel" style="margin:0">${esc(p.feel)}</p>
    </div>
@@ -892,14 +876,14 @@ function renderDetail(){
    <div class="d-sec"><span class="eyebrow">Pirámide olfativa</span><div class="pyr">${rows.map(r=>`<div><b>${r[0]}</b><span>${r[1].map(x=>`${noteIcon(x)} ${esc(x)}`).join(", ")}</span></div>`).join("")}</div></div>
    <div class="d-sec"><span class="eyebrow">Rendimiento según su concentración</span><div class="meters">${meter("Duración",p.dur,["2–3 h","3–5 h","5–7 h","7–9 h","+10 h"])}${meter("Estela",p.est,["Íntima","Suave","Moderada","Notable","Fuerte"])}</div></div>
    <div class="d-sec"><span class="eyebrow">Elige tu formato</span>${fs.length?`<div class="formats">${fs.map(fmtRow).join("")}</div>
-   <p class="notice" style="color:var(--gold)">Lleva 2 decants y el 3.º tiene 15%. En botellas: una de hombre y una de mujer, y la 3.ª tiene 15%.</p>
+   <p class="notice" style="color:var(--gold)">Lleva 2 decants y el 3.º tiene ${PD} de descuento. En perfumes: uno de hombre y otro de mujer, y el 3.º tiene ${PB} de descuento.</p>
    <div class="buy-bar"><div class="qty"><button data-q="-1" aria-label="Menos">−</button><span class="num" id="qv">${selQty}</span><button data-q="1" aria-label="Más">+</button></div><span class="buy-total num">${bs(price(p,selFmt)*selQty)}</span></div>
    <div class="stack">
      <button class="btn btn-gold btn-block" id="addCart">🛒 Agregar al carrito</button>
      <button class="btn btn-wa btn-block" id="buyNow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Detalles de Pedido por WhatsApp</button>
      <button class="btn btn-ghost btn-block" id="wishD">${wish.includes(p.id)?"En tu lista de deseos":"Guardar y avisarme si baja de precio"}</button>
    </div>`:`<p class="notice">Consulta precio y formatos por WhatsApp.</p><div class="stack"><a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="${waLink(`Hola, quiero el precio de ${p.nombre} (${p.marca}).`)}">Consultar por WhatsApp</a></div>`}</div>
-   <div class="d-sec"><span class="eyebrow">Perfiles similares</span><div class="similar">${sims(p).map(x=>`<button class="mini" data-open="${x.id}"><div class="pic" style="${tint(x)}">${ph(x,"spot")}</div><div><small>${esc(x.marca)}</small>${esc(x.nombre)}</div></button>`).join("")}</div></div>
+   <div class="d-sec"><span class="eyebrow">Perfiles similares</span><div class="similar">${sims(p).map(x=>`<button class="mini" data-open="${x.id}"><div class="pic" style="${tint(x)}">${ph(x)}</div><div><small>${esc(x.marca)}</small>${esc(x.nombre)}</div></button>`).join("")}</div></div>
    <p class="notice">Ficha basada en <a href="${p.parfumo}" target="_blank" rel="noopener" style="color:var(--gold)">Parfumo</a>.</p>`;
   requestAnimationFrame(()=>startStage($("#dBody .stage")));
 }
@@ -911,19 +895,18 @@ function computeTotals(){
   cart.forEach((l,li)=>{const p=byId(l.id);for(let i=0;i<l.qty;i++)units.push({li,fmt:l.fmt,price:price(p,l.fmt)})});
   const bots=cart.filter(l=>!isDecant(l.fmt)).map(l=>byId(l.id).g);
   const hasH=bots.includes("H"),hasM=bots.includes("M"),pair=hasH&&hasM;
-  let sub=0,discD=0,discB=0,nd=0,nb=0,ofe=0;const discLines=new Map();
-  cart.forEach(l=>{const p=byId(l.id);if(isSale(p,l.fmt))ofe+=(basePrice(p,l.fmt)-price(p,l.fmt))*l.qty});
+  let sub=0,discD=0,discB=0,nd=0,nb=0;const discLines=new Map();
   units.forEach(u=>{sub+=u.price;
-    if(isDecant(u.fmt)){nd++;if(nd%CONFIG.cadaDecants===0){discD+=u.price*CONFIG.descuentoDecant;discLines.set(u.li,"Incluye 15% del 3.er decant")}}
-    else{nb++;if(pair&&nb%CONFIG.cadaBotellas===0){discB+=u.price*CONFIG.descuentoBotella;discLines.set(u.li,"Incluye 15% de la 3.ª botella")}}});
+    if(isDecant(u.fmt)){nd++;if(nd%CONFIG.cadaDecants===0){discD+=u.price*CONFIG.descuentoDecant;discLines.set(u.li,`Incluye ${PD} del 3.er decant`)}}
+    else{nb++;if(pair&&nb%CONFIG.cadaBotellas===0){discB+=u.price*CONFIG.descuentoBotella;discLines.set(u.li,`Incluye ${PB} del 3.er perfume`)}}});
   const disc=discD+discB;
-  return {n:units.length,nd,nb,hasH,hasM,pair,sub,discD,discB,disc,ofe,total:sub-disc,discLines};
+  return {n:units.length,nd,nb,hasH,hasM,pair,sub,discD,discB,disc,total:sub-disc,discLines};
 }
 function bottleMsg(t){
-  if(!t.pair)return t.hasH?"Agrega una botella sellada <b>de mujer</b> y la 3.ª botella tendrá 15% de descuento.":t.hasM?"Agrega una botella sellada <b>de hombre</b> y la 3.ª botella tendrá 15% de descuento.":"Incluye una botella de hombre y una de mujer: la 3.ª tendrá 15% de descuento.";
+  if(!t.pair)return t.hasH?`Agrega un perfume <b>de mujer</b> y el 3.er perfume tendrá ${PB} de descuento.`:t.hasM?`Agrega un perfume <b>de hombre</b> y el 3.er perfume tendrá ${PB} de descuento.`:`Incluye un perfume de hombre y otro de mujer: el 3.º tendrá ${PB} de descuento.`;
   const r=t.nb%3,left=3-r;
-  if(t.nb<3)return `Ya tienes hombre y mujer. Agrega <b>${3-t.nb}</b> botella más y tendrá 15% de descuento.`;
-  return r===0?"Descuento de botella aplicado. Con 3 botellas más ganas otro 15%.":`Descuento de botella aplicado. Te falta${left===1?"":"n"} <b>${left}</b> para el siguiente 15%.`;
+  if(t.nb<3)return `Ya tienes hombre y mujer. Agrega <b>${3-t.nb}</b> perfume más y tendrá ${PB} de descuento.`;
+  return r===0?`Descuento de perfume aplicado. Con 3 perfumes más ganas otro ${PB}.`:`Descuento de perfume aplicado. Te falta${left===1?"":"n"} <b>${left}</b> para el siguiente ${PB}.`;
 }
 function addToCart(id,fmt,qty){
   if(!fmt)return;const ex=cart.find(l=>l.id===id&&l.fmt===fmt);
@@ -947,15 +930,15 @@ function renderCart(){
   if(cartTab==="pedido"){
     if(!cart.length){B.innerHTML=`<div class="empty" style="margin-top:10px">🛒 Tu carrito está vacío. Elige un perfume y su formato para empezar.</div><div class="stack"><button class="btn btn-gold" data-close>Ver catálogo</button></div>`;return}
     const t=computeTotals(),k=CONFIG.cadaDecants,r=t.nd%k,left=k-r;
-    B.innerHTML=cart.map((l,i)=>{const p=byId(l.id);return `<div class="line"><div class="pic" style="${tint(p)}">${ph(p,"spot")}</div><div class="t"><b>${esc(p.nombre)}</b><span>${esc(p.marca)} · ${esc(fmtName(p,l.fmt))}</span>${isSale(p,l.fmt)?`<span class="disc">Oferta del día −10% (antes ${bs(basePrice(p,l.fmt))})</span>`:""}${t.discLines.has(i)?`<span class="disc">${t.discLines.get(i)}</span>`:""}<div class="row"><div class="qty"><button data-lq="${i}" data-d="-1" aria-label="Menos">−</button><span class="num">${l.qty}</span><button data-lq="${i}" data-d="1" aria-label="Más">+</button></div><span class="num" style="color:var(--gold-hi)">${bs(price(p,l.fmt)*l.qty)}</span><button class="rm" data-rm="${i}">Quitar</button></div></div></div>`}).join("")+`
-     ${t.nd?`<div class="progress">${t.nd<k?`Agrega <b>${k-t.nd}</b> decant${k-t.nd===1?"":"s"} más y el 3.º tiene 15% de descuento.`:r===0?`Descuento aplicado. Con 3 decants más ganas otro 15%.`:`Descuento aplicado. Te falta${left===1?"":"n"} <b>${left}</b> decant${left===1?"":"s"} para el siguiente 15%.`}<div class="track"><i style="width:${(r===0&&t.nd?k:r)/k*100}%"></i></div></div>`:""}
+    B.innerHTML=cart.map((l,i)=>{const p=byId(l.id);return `<div class="line"><div class="pic" style="${tint(p)}">${ph(p)}</div><div class="t"><b>${esc(p.nombre)}</b><span>${esc(p.marca)} · ${esc(fmtName(p,l.fmt))}</span>${t.discLines.has(i)?`<span class="disc">${t.discLines.get(i)}</span>`:""}<div class="row"><div class="qty"><button data-lq="${i}" data-d="-1" aria-label="Menos">−</button><span class="num">${l.qty}</span><button data-lq="${i}" data-d="1" aria-label="Más">+</button></div><span class="num" style="color:var(--gold-hi)">${bs(price(p,l.fmt)*l.qty)}</span><button class="rm" data-rm="${i}">Quitar</button></div></div></div>`}).join("")+`
+     ${t.nd?`<div class="progress">${t.nd<k?`Agrega <b>${k-t.nd}</b> decant${k-t.nd===1?"":"s"} más y el 3.º tiene ${PD} de descuento.`:r===0?`Descuento aplicado. Con 3 decants más ganas otro ${PD}.`:`Descuento aplicado. Te falta${left===1?"":"n"} <b>${left}</b> decant${left===1?"":"s"} para el siguiente ${PD}.`}<div class="track"><i style="width:${(r===0&&t.nd?k:r)/k*100}%"></i></div></div>`:""}
      ${t.nb?`<div class="progress">${bottleMsg(t)}<div class="track"><i style="width:${t.pair?((t.nb%3===0?3:t.nb%3)/3*100):((+t.hasH + +t.hasM)/3*100)}%"></i></div></div>`:""}
-     <div class="totals"><div><span>Subtotal</span><span class="num">${bs(t.sub)}</span></div>${t.ofe?`<div class="d"><span>Ya ahorras con ofertas del día (10%)</span><span class="num">${bs(t.ofe)}</span></div>`:""}${t.discD?`<div class="d"><span>Descuento 3.er decant (15%)</span><span class="num">−${bs(t.discD)}</span></div>`:""}${t.discB?`<div class="d"><span>Descuento 3.ª botella (15%)</span><span class="num">−${bs(t.discB)}</span></div>`:""}<div class="g"><span>Total estimado</span><span class="num">${bs(t.total)}</span></div></div>
+     <div class="totals"><div><span>Subtotal</span><span class="num">${bs(t.sub)}</span></div>${t.discD?`<div class="d"><span>Descuento 3.er decant (${PD})</span><span class="num">−${bs(t.discD)}</span></div>`:""}${t.discB?`<div class="d"><span>Descuento 3.er perfume hombre + mujer (${PB})</span><span class="num">−${bs(t.discB)}</span></div>`:""}<div class="g"><span>Total estimado</span><span class="num">${bs(t.total)}</span></div></div>
      <p class="notice">El asesor confirma pago y entrega por WhatsApp. Dólar del día: Bs ${TC.toFixed(2).replace(".",",")}.</p>
      <div class="stack"><button class="btn btn-gold btn-block" data-tab-go="datos">Continuar compra</button></div>`;
   }else if(cartTab==="deseos"){
     if(!wish.length){B.innerHTML=`<div class="empty" style="margin-top:10px">Toca el corazón de cualquier perfume para guardarlo. Te avisamos por WhatsApp cuando entre en descuento.</div>`;return}
-    B.innerHTML=wish.filter(byId).map(id=>{const p=byId(id),fi=fromInfo(p);return `<div class="line"><div class="pic" style="${tint(p)}">${ph(p,"spot")}</div><div class="t"><b>${esc(p.nombre)}</b><span>${esc(p.marca)}${fi?" · desde "+bs(fi.v):""}</span>${saleFmt(p)?`<span class="disc">Hoy está en oferta −10%</span>`:""}<div class="row"><button class="btn btn-ghost" style="min-height:40px;padding:8px 14px" data-open="${p.id}">Ver formatos</button><button class="rm" data-wish="${p.id}">Quitar</button></div></div></div>`}).join("")+`
+    B.innerHTML=wish.filter(byId).map(id=>{const p=byId(id),fi=fromInfo(p);return `<div class="line"><div class="pic" style="${tint(p)}">${ph(p)}</div><div class="t"><b>${esc(p.nombre)}</b><span>${esc(p.marca)}${fi?" · desde "+bs(fi.v):""}</span><div class="row"><button class="btn btn-ghost" style="min-height:40px;padding:8px 14px" data-open="${p.id}">Ver formatos</button><button class="rm" data-wish="${p.id}">Quitar</button></div></div></div>`}).join("")+`
      <div class="wish-alert"><p><b>Aviso de descuento</b><br><span style="color:var(--mute)">Envía tu lista y Mr. Borth te escribe por WhatsApp cuando alguno de estos perfumes baje de precio.</span></p>
      <div class="field" id="fWN"><label for="wName">Tu nombre</label><input id="wName" value="${esc(client.nombre)}" autocomplete="name"><span class="msg">Escribe tu nombre para registrarte.</span></div>
      <a class="btn btn-wa btn-block" id="wishSend" href="#" target="_blank" rel="noopener">Activar aviso por WhatsApp</a></div>`;
@@ -1060,10 +1043,10 @@ function orderMessage(){
   L.push(`Asesoría personalizada: ${c.asesoria?"Sí, la solicita":"No"}`);
   if(cart.length){
     L.push("","*Carrito de compra*");
-    cart.forEach((l,i)=>{const p=byId(l.id);L.push(`${i+1}. ${p.nombre} (${p.marca})`,`   ${fmtName(p,l.fmt)} × ${l.qty} = ${bs(price(p,l.fmt)*l.qty)}${isSale(p,l.fmt)?" (oferta del día −10%)":""}`)});
+    cart.forEach((l,i)=>{const p=byId(l.id);L.push(`${i+1}. ${p.nombre} (${p.marca})`,`   ${fmtName(p,l.fmt)} × ${l.qty} = ${bs(price(p,l.fmt)*l.qty)}`)});
     L.push("",`Subtotal: ${bs(t.sub)}`);
-    if(t.discD)L.push(`Descuento 3.er decant (15%): −${bs(t.discD)}`);
-    if(t.discB)L.push(`Descuento 3.ª botella hombre + mujer (15%): −${bs(t.discB)}`);
+    if(t.discD)L.push(`Descuento 3.er decant (${PD}): −${bs(t.discD)}`);
+    if(t.discB)L.push(`Descuento 3.er perfume hombre + mujer (${PB}): −${bs(t.discB)}`);
     L.push(`*Total estimado: ${bs(t.total)}*`,`Dólar del día: Bs ${TC.toFixed(2).replace(".",",")}`);
   }
   if(c.when)L.push("",whenText());
@@ -1075,26 +1058,23 @@ function orderMessage(){
 function wishMessage(){return [`*AVISO DE DESCUENTO · ${CONFIG.marca}*`,"",`Hola, soy ${client.nombre.trim()||"(nombre)"}. Quiero que me avisen cuando estos perfumes entren en descuento:`,...wish.filter(byId).map((id,i)=>{const p=byId(id);return `${i+1}. ${p.nombre} (${p.marca})`})].join("\n")}
 
 /* ============ PANTALLA COMPLETA (MODO ANUNCIO) ============ */
-let RL=[],fillIO,actIO;
-function reelList(base){
-  const out=[];let k=0;const sl=SALE_LIST.filter(p=>!base.slice(0,0).includes(p));
-  base.forEach(p=>{if(SALE.has(p.id))return;out.push(p);if(sl.length&&out.length%CONFIG.ofertaCada===CONFIG.ofertaCada-1){out.push(sl[k%sl.length]);k++}});
-  return out.length?out:base;
-}
+let RL=[],RN=0,fillIO,actIO;   // RL: perfumes y anuncios ({ad}) · RN: solo perfumes
+const reelList=base=>withAds(base);
 const IC={sim:'<svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>',share:'<svg viewBox="0 0 24 24"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>'};
+/* diapositiva de anuncio: misma tela de oro y botón al carrito */
+function radHTML(x){return `<div class="rad"><span class="eyebrow">Se aplica sola en tu carrito</span>${adHTML(x.ad)}<button class="btn btn-gold btn-block" data-act="cart">🛒 Ver mi carrito</button></div>`}
 function rslideHTML(p,i){
-  const sf=saleFmt(p),fi=fromInfo(p);
   const quick=p.decants.length?`<button class="btn btn-ghost" data-act="add" data-f="d0">+ Decant ${esc(p.decants[0].ml)}</button>`:"";
-  return `<div class="blob"></div>${sf?`<div class="salebig"><b>−10%</b><span>Oferta del día</span></div>`:""}
-  ${stage(p)}
+  return `<div class="blob"></div>
+  ${stage(p,true)}
   <div class="rinfo">
     <span class="eyebrow">${esc(p.marca)} · ${esc(p.concentracion)}</span>
     <h2>${esc(p.nombre)}</h2>
     <div><span class="from" style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)">Te hace sentir</span><div class="feelw">${p.feelW.map((w,k)=>`<span style="--w:${k}">${w}</span>`).join("")}</div></div>
     <p class="feel" style="font-size:1rem;margin:0">${esc(LINE[p.acordes[0]]||p.familia)}</p>
-    <div class="tags"><span class="badge gold">En stock</span><span class="badge">${esc(p.uso)}</span><span class="badge">${esc(p.estacion)}</span>${sf?`<span class="salechip">Oferta −10%</span>`:""}</div>
+    <div class="tags"><span class="badge gold">En stock</span><span class="badge">${esc(p.uso)}</span><span class="badge">${esc(p.estacion)}</span></div>
     ${priceRow(p)}
-    <div class="cta-row"><button class="btn btn-gold" style="flex:1" data-act="det">Detalles de Pedido</button>${sf?`<button class="btn btn-ghost" data-act="add" data-f="${sf}">+ Botella</button>`:quick}</div>
+    <div class="cta-row"><button class="btn btn-gold" style="flex:1" data-act="det">Detalles de Pedido</button>${quick}</div>
   </div>
   <div class="rside">
     <button data-act="wish" class="${wish.includes(p.id)?"on":""}"><span class="ic">${heartSvg}</span>Deseos</button>
@@ -1106,11 +1086,13 @@ function rslideHTML(p,i){
 function setupReel(){
   const rs=$("#rs");
   fillIO=new IntersectionObserver(es=>es.forEach(e=>{const s=e.target,i=+s.dataset.i,p=RL[i];if(!p)return;
-    if(e.isIntersecting){if(!s.dataset.f){s.style.setProperty("--c1",p.c1);s.style.setProperty("--c2",p.c2);s.innerHTML=rslideHTML(p,i);s.dataset.f=1}}
-    else if(s.dataset.f){stopStage(s.querySelector(".stage"));s.innerHTML="";delete s.dataset.f}}),{root:rs,rootMargin:"120% 0px"});
+    if(e.isIntersecting){if(!s.dataset.f){if(p.ad){s.innerHTML=radHTML(p);goldOn(s)}else{s.style.setProperty("--c1",p.c1);s.style.setProperty("--c2",p.c2);s.innerHTML=rslideHTML(p,i)}s.dataset.f=1}}
+    else if(s.dataset.f){stopStage(s.querySelector(".stage"));goldOff(s);s.innerHTML="";delete s.dataset.f}}),{root:rs,rootMargin:"120% 0px"});
   actIO=new IntersectionObserver(es=>es.forEach(e=>{const s=e.target;s.classList.toggle("on",e.isIntersecting);
-    if(e.isIntersecting){const i=+s.dataset.i;$("#rpos").textContent=(i+1)+" / "+RL.length;setTimeout(()=>startStage(s.querySelector(".stage")),30)}else stopStage(s.querySelector(".stage"))}),{root:rs,threshold:.6});
+    if(e.isIntersecting){const x=RL[+s.dataset.i];$("#rpos").textContent=x&&x.ad?"Oferta · "+s.dataset.n+" / "+RN:s.dataset.n+" / "+RN}else stopStage(s.querySelector(".stage"))}),{root:rs,threshold:.6});
   rs.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b)return;e.stopPropagation();const p=RL[+b.closest(".rslide").dataset.i];const a=b.dataset.act;
+    if(a==="cart"){openCart("pedido");return}
+    if(!p||p.ad)return;
     if(a==="det")openDetail(p.id);
     else if(a==="add")addToCart(p.id,b.dataset.f,1);
     else if(a==="wish"){toggleWish(p.id);b.classList.toggle("on",wish.includes(p.id))}
@@ -1121,14 +1103,15 @@ function setupReel(){
 }
 function openReel(base){
   if(!fillIO)setupReel();
-  RL=reelList(base);const rs=$("#rs");
-  fillIO.disconnect();actIO.disconnect();
-  rs.innerHTML=RL.map((p,i)=>`<section class="rslide" data-i="${i}" aria-label="${esc(p.nombre)}"></section>`).join("");
+  RL=reelList(base);RN=base.length;const rs=$("#rs");
+  fillIO.disconnect();actIO.disconnect();goldOff(rs);
+  let n=0;
+  rs.innerHTML=RL.map((p,i)=>p.ad?`<section class="rslide ad" data-i="${i}" data-n="${n}" aria-label="Oferta"></section>`:`<section class="rslide" data-i="${i}" data-n="${++n}" aria-label="${esc(p.nombre)}"></section>`).join("");
   $("#reel").hidden=false;document.body.classList.add("locked");rs.scrollTop=0;
   rs.querySelectorAll(".rslide").forEach(s=>{fillIO.observe(s);actIO.observe(s)});
   askMotion();
 }
-function closeReel(){if(gyroOn){removeEventListener("deviceorientation",onOri);gyroOn=false;gyro=false}$("#reel").hidden=true;$("#rs").innerHTML="";if(fillIO){fillIO.disconnect();actIO.disconnect()}if(!document.querySelector(".sheet.open"))document.body.classList.remove("locked")}
+function closeReel(){stopMotion();document.querySelectorAll("#rs .stage.play").forEach(stopStage);goldOff($("#rs"));$("#reel").hidden=true;$("#rs").innerHTML="";if(fillIO){fillIO.disconnect();actIO.disconnect()}if(!document.querySelector(".sheet.open"))document.body.classList.remove("locked")}
 function share(p){
   let url="";try{if(/^https?:$/.test(location.protocol))url=location.origin+location.pathname+"#"+p.id}catch(e){}
   const text=`Mira este perfume en ${CONFIG.marca}: ${p.nombre} de ${p.marca}. ${p.feel}`;
@@ -1141,9 +1124,12 @@ const root=document.documentElement;
 let tiltRaf=0,tiltXY=[0,0];
 function setTilt(x,y){tiltXY=[x,y];if(tiltRaf)return;tiltRaf=requestAnimationFrame(()=>{tiltRaf=0;const r=$("#reel");if(r.hidden)return;const s=r.querySelector(".rslide.on .scene");if(s)s.style.transform=`rotateX(${(-tiltXY[1]*14).toFixed(1)}deg) rotateY(${(tiltXY[0]*22).toFixed(1)}deg)`})}
 function parallax(e){if(RM||e.pointerType!=="mouse")return;setTilt(e.clientX/innerWidth-.5,e.clientY/innerHeight-.5)}
-let gyro=false,gyroOn=false;
+/* la inclinación solo escucha mientras la pantalla completa está abierta; al cerrarla se quita */
+let gyroOn=false;
 function onOri(e){if(e.gamma==null||$("#reel").hidden)return;setTilt(Math.max(-1,Math.min(1,e.gamma/30))*.5,Math.max(-1,Math.min(1,(e.beta-45)/30))*.5)}
-function askMotion(){if(gyro||RM)return;gyro=true;try{if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(s=>{if(s==="granted")(gyroOn=true,addEventListener("deviceorientation",onOri,{passive:true}))}).catch(()=>{})}else (gyroOn=true,addEventListener("deviceorientation",onOri,{passive:true}))}catch(e){}}
+function startMotion(){if(gyroOn||$("#reel").hidden)return;gyroOn=true;addEventListener("deviceorientation",onOri,{passive:true})}
+function stopMotion(){if(gyroOn){removeEventListener("deviceorientation",onOri);gyroOn=false}if(tiltRaf){cancelAnimationFrame(tiltRaf);tiltRaf=0}}
+function askMotion(){if(RM||gyroOn)return;try{if(typeof DeviceOrientationEvent==="undefined")return;if(typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(s=>{if(s==="granted")startMotion()}).catch(()=>{})}else startMotion()}catch(e){}}
 
 
 /* ============ TEST DE PERFIL OLFATIVO ============ */
@@ -1178,7 +1164,7 @@ function qScore(p,A){
   if(A.int==="sutil"){if(p.dur<=3)s+=3;if(p.strong)s-=2}
   if(A.int==="estela"){if(p.strong){s+=3;why.push("buena estela")}else if(p.dur<=3)s-=2}
   if(A.int==="media"&&p.dur===4)s+=2;
-  if(saleFmt(p))s+=1;s+=(+p.rating||6)*.3;
+  s+=(+p.rating||6)*.3;
   return {s,why:[...new Set(why)].slice(0,2)};
 }
 function openQuiz(step){
@@ -1204,7 +1190,7 @@ function quizResults(){
   B.innerHTML=`<div class="stepn">${QX?"Asesoría express":"Resultado"}</div><div class="pbar"><i style="width:100%"></i></div>
    <div class="profres"><span class="eyebrow">${client.nombre.trim()?esc(client.nombre.trim().split(" ")[0])+", tu perfil olfativo":"Tu perfil olfativo"}</span><h2>${F.perfil}</h2><p>${F.txt}</p><p style="margin-top:8px;font-size:.85rem;color:var(--mute)">${(QA.fam||[]).map(k=>QFAM[k].t).join(" · ")}</p></div>
    ${RECS.length?`<button class="btn btn-gold btn-block" id="qreel" style="margin-bottom:16px">▶ Ver mis perfumes en pantalla completa</button>
-   ${RECS.map((r,i)=>{const fi=fromInfo(r.p);return `<button class="rec" style="--i:${i}" data-open="${r.p.id}"><span class="pic" style="${tint(r.p)}">${ph(r.p,"spot")}</span><span><small>${esc(r.p.marca)}</small><b>${esc(r.p.nombre)}</b><span class="why">${r.why.length?"Por "+r.why.join(" y "):"Afín a tu perfil"}</span><small>${fi?"desde "+bs(fi.v):"Precio a consultar"}${saleFmt(r.p)?" · oferta −10%":""}</small></span><span class="sc">${Math.max(50,Math.round(r.s/mx*98))}%</span></button>`}).join("")}`
+   ${RECS.map((r,i)=>{const fi=fromInfo(r.p);return `<button class="rec" style="--i:${i}" data-open="${r.p.id}"><span class="pic" style="${tint(r.p)}">${ph(r.p)}</span><span><small>${esc(r.p.marca)}</small><b>${esc(r.p.nombre)}</b><span class="why">${r.why.length?"Por "+r.why.join(" y "):"Afín a tu perfil"}</span><small>${fi?"desde "+bs(fi.v):"Precio a consultar"}</small></span><span class="sc">${Math.max(50,Math.round(r.s/mx*98))}%</span></button>`}).join("")}`
    :`<p class="notice">No encontramos perfumes con todas esas condiciones. Cambia el clima o el presupuesto.</p>`}
    <div class="stack"><a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="${waLink(quizMsg(F))}">Pedir asesoría a Mr. Borth por WhatsApp</a><button class="btn btn-ghost btn-block" id="qr">Repetir el test</button></div>`;
   B.querySelector("#qr").onclick=()=>openQuiz(0);
@@ -1280,7 +1266,7 @@ $("#toTop").addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
 $("#footCart").addEventListener("click",()=>openCart("pedido"));
 
 /* ofertas en tela de oro: solo se animan mientras están en pantalla */
-try{const gio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("vis",e.isIntersecting)));document.querySelectorAll(".gold-cloth").forEach(g=>gio.observe(g))}catch(e){document.querySelectorAll(".gold-cloth").forEach(g=>g.classList.add("vis"))}
+goldOn(document.querySelector("#empresa"));
 /* al salir de la app o cambiar de pestaña se detiene cualquier animación de perfume */
 document.addEventListener("visibilitychange",()=>{if(document.hidden)document.querySelectorAll(".stage.play").forEach(stopStage)});
 /* si la app quedó abierta de un día para otro (o el dólar aún no era de hoy), al volver se recarga con la cotización nueva */
@@ -1290,9 +1276,9 @@ document.addEventListener("visibilitychange",()=>{if(document.hidden)return;
 /* ============ ARRANQUE ============ */
 $("#grid").innerHTML=`<div class="empty">Cargando catálogo…</div>`;
 Promise.all([fetch("catalogo.json").then(r=>r.json()),loadTC()]).then(([d])=>{
-  DATA=d;DATA.forEach(p=>{BY[p.id]=p;prep(p)});applyTC();pickSales();
+  DATA=d;DATA.forEach(p=>{BY[p.id]=p;prep(p)});applyTC();
   cart=cart.filter(l=>byId(l.id)&&fmtInfo(byId(l.id),l.fmt));
-  renderHero();renderOffers();renderFilters();renderGrid(1);updateFab();
+  renderHero();renderFilters();renderGrid(1);updateFab();
   const h=location.hash.slice(1);if(h&&byId(h))openDetail(h);
 }).catch(()=>{$("#grid").innerHTML=`<div class="empty">No se pudo cargar el catálogo. Recarga la página.</div>`});
 </script>

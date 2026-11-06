@@ -1,9 +1,9 @@
 // Mr. Borth Tienda — caché para abrir rápido y sin conexión
-const V='mb-tienda-v10';
+const V='mb-tienda-v11';
 const CORE=['./','index.html','manifest.json','catalogo.json','icons/icon-192.png','logo-mark.png','logo.png'];
-// Fotos de los perfumes (img/<id>.jpg): la lista sale del propio catálogo (campo "img"),
+// Fotos de los perfumes recortadas sin fondo (img/<id>.webp): la lista sale del propio catálogo (campo "img"),
 // así siempre coincide con los perfumes publicados. Se guardan en segundo plano sin frenar la instalación.
-const fotos=()=>fetch('catalogo.json',{cache:'no-store'}).then(r=>r.json()).then(d=>[...new Set(d.map(p=>p.img||('img/'+p.id+'.jpg')))]);
+const fotos=()=>fetch('catalogo.json',{cache:'no-store'}).then(r=>r.json()).then(d=>[...new Set(d.map(p=>(p.img||('img/'+p.id+'.jpg')).replace(/\.(jpe?g|png)$/i,'.webp')))]);
 async function guardarFotos(){
   try{
     const c=await caches.open(V),lista=await fotos();

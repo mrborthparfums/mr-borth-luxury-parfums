@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c0b09"><meta name="description" content="Perfumes originales, decants y botellas selladas. Elige tu esencia. Define tu presencia."><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style>body{margin:0}
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c0b09"><meta name="description" content="Perfumes originales, decants y botellas selladas. Elige tu esencia. Define tu presencia."><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Mr. Borth Luxury Parfums"><meta property="og:title" content="Mr. Borth Luxury Parfums · Perfumes originales, decants y botellas selladas"><meta property="og:description" content="Elige tu esencia. Define tu presencia. Decants de 4 ml y 10 ml y botellas originales selladas en La Paz, Bolivia."><meta property="og:image" content="https://mr-borth-luxury-parfums.netlify.app/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style>body{margin:0}
 </style></head><body><title>Tienda Mr. Borth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -280,6 +280,7 @@ form{display:grid;gap:14px}
 /* tarjetas con foto */
 .card .pic{background:var(--char)}
 .card .pic .ph{width:90%;margin:auto auto 5%;align-self:end}
+.card .pic .ph.raw{position:absolute;inset:16% 9% 9%;width:auto;margin:0;padding:6%}
 .card .pic .badge{z-index:2}
 .card .pic .badge.sale{background:var(--sale);color:#1a0d06;border-color:var(--sale);font-weight:600}
 .card .stockb{position:absolute;left:10px;bottom:10px;z-index:2;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:3px 7px;border-radius:99px}
@@ -472,6 +473,83 @@ form{display:grid;gap:14px}
 .rinfo{background:linear-gradient(to top,rgba(0,0,0,.72) 75%,transparent);padding-top:22px;margin-top:-22px;border-radius:14px}
 .rinfo .cta-row .btn{padding:12px 14px;font-size:.92rem;white-space:nowrap}
 @media (max-height:820px){.rslide .stage{--W:min(40vw,200px,22svh)}.rinfo>.feel{display:none}}
+/* ====== v9: frascos recortados (fondo transparente) en vitrina premium, 50% más grandes, compartir siempre a mano ====== */
+.ph.cut{background:none;border-radius:0;padding:0;overflow:visible;position:relative;isolation:isolate}
+.ph.cut::before{content:"";position:absolute;left:50%;bottom:-2%;width:78%;height:9%;transform:translateX(-50%);border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.75),rgba(0,0,0,.35) 45%,transparent 72%)}
+.ph.cut::after{content:"";position:absolute;left:50%;top:6%;width:96%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;z-index:-2;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,236,196,.20),rgba(200,163,90,.07) 45%,transparent 68%)}
+.ph.cut img{object-position:50% 100%;border-radius:0;filter:drop-shadow(0 14px 16px rgba(0,0,0,.5)) drop-shadow(0 2px 3px rgba(0,0,0,.35));
+  -webkit-box-reflect:below 1px linear-gradient(transparent 82%,rgba(255,255,255,.16));transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.stage .btl .ph.cut{box-shadow:none}
+.stage .btl .ph.cut::before,.stage .btl .ph.cut::after{display:none}
+/* vitrina de la tarjeta: foco cálido, piso de cristal y frasco grande */
+.card .pic{background-blend-mode:normal;overflow:hidden}
+.card .pic .badge{white-space:nowrap}
+.card .pic::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12%;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,rgba(255,236,196,.05) 40%,rgba(0,0,0,.25));border-top:1px solid rgba(232,204,142,.10)}
+.card .pic .ph.cut{position:absolute;inset:16% 9% 11.5%;width:auto;height:auto;margin:0;aspect-ratio:auto;align-self:auto}
+.mini .pic .ph.cut,.line .pic .ph.cut,.rec .pic .ph.cut{width:84%;height:84%;aspect-ratio:auto}
+.mini{flex-basis:170px}
+.mini .pic{height:200px}
+.line{grid-template-columns:96px 1fr}
+.line .pic{height:118px}
+.rec{grid-template-columns:92px 1fr auto}
+.rec .pic{width:92px;height:110px;display:grid;place-items:center}
+/* escenarios 1,5× */
+.slide .bottle-stage{height:clamp(340px,54svh,580px)}
+.slide .stage{--W:min(68vw,345px,36svh)}
+.d-hero{height:clamp(380px,56svh,520px);border-radius:22px;position:relative}
+.d-hero .stage{--W:min(76vw,345px,44svh);touch-action:pan-y}
+.rslide .stage{--W:min(80vw,405px,44svh)}
+@media (max-height:820px){.rslide .stage{--W:min(62vw,300px,33svh)}}
+@media (min-width:900px){.rslide .stage{--W:min(40vw,480px,62svh)}}
+.ph.raw{background:#f7f4ee}
+/* compartir */
+.share-btn{position:absolute;right:8px;top:52px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  background:color-mix(in srgb,var(--ink) 60%,transparent);color:var(--bone);padding:0}
+.share-btn svg,.heart.sh svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7}
+.heart.sh svg{width:20px;height:20px}
+.icon-btn svg{width:20px;height:20px}
+.sheet-head .hbtns{display:flex;gap:8px}
+.zoom-btn{position:absolute;right:12px;bottom:12px;z-index:5;display:flex;align-items:center;gap:6px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold-hi);background:rgba(12,11,9,.62);border:1px solid rgba(200,163,90,.4);padding:7px 12px;border-radius:99px}
+.d-hero .shr{left:12px;right:auto}
+#shareSheet{z-index:95;max-height:90svh}
+#shareSheet .sheet-body{display:grid;gap:14px}
+.sh-prev{display:grid;place-items:center;border-radius:18px;overflow:hidden;background:var(--char);border:1px solid var(--line);min-height:200px}
+.sh-prev img{display:block;width:auto;max-width:100%;max-height:44svh;height:auto;border-radius:14px;margin:12px auto;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.sh-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sh-grid button,.sh-grid a{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:4px 0;font-size:.72rem;color:var(--bone);text-decoration:none;text-align:center;line-height:1.2}
+.sh-grid .ic{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--char-2);border:1px solid var(--line);font-size:1.3rem}
+.sh-grid .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.sh-grid .ic.wa{background:var(--wa);border-color:var(--wa);color:#06230f}
+.sh-grid .ic.fb{background:#1877f2;border-color:#1877f2;color:#fff}
+.sh-grid .ic.tg{background:#229ed9;border-color:#229ed9;color:#fff}
+.sh-grid .ic.wa svg,.sh-grid .ic.fb svg,.sh-grid .ic.tg svg{fill:currentColor;stroke:none}
+/* visor a pantalla completa */
+.viewer{position:fixed;inset:0;z-index:120;display:grid;grid-template-rows:auto 1fr auto;background:radial-gradient(90% 70% at 50% 42%,var(--vc,#3a2c10) 0%,#0b0a08 70%);color:var(--bone)}
+.viewer[hidden]{display:none}
+.viewer .vtop,.viewer .vbot{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}
+.viewer .vbot{padding:12px 16px calc(16px + env(safe-area-inset-bottom,0px));justify-content:center;flex-wrap:wrap}
+.viewer .vtop b{font-family:var(--f-display);font-weight:400;font-size:1.2rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer .vstage{position:relative;overflow:hidden;display:grid;place-items:center;touch-action:none;cursor:grab}
+.viewer .vstage img{max-width:88%;max-height:86%;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6));-webkit-box-reflect:below 2px linear-gradient(transparent 84%,rgba(255,255,255,.16));
+  transform:translate(var(--x,0),var(--y,0)) scale(var(--s,1)) rotateY(var(--ry,0deg));transition:transform .2s;will-change:transform;user-select:none;-webkit-user-drag:none}
+.viewer .vstage.drag img{transition:none}
+.viewer .vhint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:92%;text-align:center;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);pointer-events:none}
+/* interacción táctil */
+.card,.btn,.chip,.prof,.mini,.add,.heart,.share-btn,.icon-btn{-webkit-tap-highlight-color:transparent}
+.btn:active,.chip:active,.prof:active,.add:active,.heart:active,.share-btn:active,.icon-btn:active,.mini:active,.sh-grid .ic:active{transform:scale(.95)}
+.btn,.chip,.prof,.add,.heart,.share-btn,.icon-btn,.mini,.sh-grid .ic{transition:transform .15s ease,background .2s,border-color .2s}
+.card{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.card:hover{border-color:color-mix(in srgb,var(--gold) 45%,var(--line))}
+.card.tilt{transition:transform .08s linear}
+.card .pic:active .ph.cut img{transform:scale(1.04)}
+.heart.pop svg{animation:pop .45s cubic-bezier(.2,.8,.2,1.4)}
+@keyframes pop{40%{transform:scale(1.45)}}
+.sheet.dragging{transition:none}
+.grab{cursor:grab;padding-block:6px;background-clip:content-box;height:16px;width:60px}
 </style>
 
 <header class="top">
@@ -479,6 +557,7 @@ form{display:grid;gap:14px}
     <div class="top-in">
       <a class="brand" href="#empresa" id="logoBtn" aria-label="Mr. Borth Luxury Parfums: ver datos de la empresa y compra rápida"><img class="logo-mark" src="logo-mark.png" alt="Mr. Borth"><span class="brand-txt"><span class="mk">Mr. Borth</span><span class="sub">Luxury Parfums</span></span></a>
       <div style="display:flex;gap:8px">
+        <button class="icon-btn" id="shareTop" aria-label="Compartir la tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button>
         <button class="icon-btn" id="searchBtn" aria-label="Buscar perfume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
         <a class="icon-btn" id="waTop" href="#" target="_blank" rel="noopener" aria-label="Hablar con un asesor por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
       </div>
@@ -570,6 +649,7 @@ form{display:grid;gap:14px}
     <button class="btn btn-gold btn-block" id="footCart">🛒 Ver mi carrito</button>
     <a class="btn btn-wa btn-block" id="waFoot" href="#" target="_blank" rel="noopener">Hablar con un asesor</a>
   </div>
+  <button class="btn btn-ghost btn-block" id="shareShop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>Compartir la tienda</button>
   <button class="to-top" id="toTop">Volver arriba</button>
 </footer>
 
@@ -592,7 +672,7 @@ form{display:grid;gap:14px}
 
 <div class="sheet" id="detail" role="dialog" aria-modal="true" aria-label="Detalle del perfume">
   <div class="grab"></div>
-  <div class="sheet-head wrap"><span class="eyebrow" id="dHouse"></span><button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="sheet-head wrap"><span class="eyebrow" id="dHouse"></span><div class="hbtns"><button class="icon-btn" id="dShare" aria-label="Compartir este perfume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button><button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
   <div class="sheet-body wrap" id="dBody"></div>
 </div>
 
@@ -613,6 +693,18 @@ form{display:grid;gap:14px}
   <div class="grab"></div>
   <div class="sheet-head wrap"><span class="eyebrow">Tu perfil olfativo</span><button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <div class="sheet-body wrap qz" id="qBody"></div>
+</div>
+
+<div class="sheet" id="shareSheet" role="dialog" aria-modal="true" aria-label="Compartir">
+  <div class="grab"></div>
+  <div class="sheet-head wrap"><span class="eyebrow" id="shTitle">Compartir</span><button class="icon-btn" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="sheet-body wrap" id="shBody"></div>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Foto del perfume">
+  <div class="vtop"><b id="vName"></b><button class="icon-btn" id="vShare" aria-label="Compartir esta foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button><button class="icon-btn" id="vClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="vstage" id="vStage"><img id="vImg" alt=""><span class="vhint">Arrastra para girar · pellizca o doble toque para acercar</span></div>
+  <div class="vbot"><button class="btn btn-gold" id="vOpen">Ver detalles y formatos</button><a class="btn btn-ghost" id="vPng" download>Descargar PNG sin fondo</a></div>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
@@ -698,6 +790,8 @@ const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const waLink=text=>"https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(text);
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PD=Math.round(CONFIG.descuentoDecant*100)+"%",PB=Math.round(CONFIG.descuentoBotella*100)+"%"; // textos de descuento
+const shareSvg=`<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>`;
+const buzz=(ms=10)=>{try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
 const heartSvg=`<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 5 7 5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 16.4 12 21 12 21Z"/></svg>`;
 
 /* ============ PRECIOS, FORMATOS Y OFERTAS ============ */
@@ -749,8 +843,13 @@ function prep(p){
   p.est=Math.max(2,p.dur-(/toilette|cologne/.test(c)?0:0));
   p.hay=norm([p.nombre,p.marca,p.familia,...p.acordes,...Object.values(p.notas).flat()].join(" "));
 }
-/* foto completa del frasco (img/<id>.jpg, fondo blanco original) dentro de una tarjeta clara */
-function ph(p,eager){const src=p.img||`img/${p.id}.jpg`;return `<span class="ph"><img src="${esc(src)}" alt="${esc(p.nombre)} de ${esc(p.marca)}" width="389" height="389" decoding="async"${eager?"":' loading="lazy"'}></span>`}
+/* frasco recortado sobre fondo transparente: img/<id>.webp (liviano, para la app) e img/png/<id>.png (PNG con canal alfa, máxima calidad).
+   Si un perfume nuevo aún no tiene recorte, se usa la foto original img/<id>.jpg en una tarjeta clara. */
+const rawSrc=p=>p.img||`img/${p.id}.jpg`;
+const cutSrc=p=>rawSrc(p).replace(/\.(jpe?g|png)$/i,".webp");
+const pngSrc=p=>rawSrc(p).replace(/^img\//,"img/png/").replace(/\.(jpe?g|webp)$/i,".png");
+function ph(p,eager){return `<span class="ph cut"><img src="${esc(cutSrc(p))}" data-raw="${esc(rawSrc(p))}" alt="${esc(p.nombre)} de ${esc(p.marca)}" decoding="async" onerror="phRaw(this)"${eager?"":' loading="lazy"'}></span>`}
+function phRaw(i){i.onerror=null;const s=i.parentNode;s.classList.remove("cut");s.classList.add("raw");i.src=i.dataset.raw}
 const tint=(p,str=.35)=>`background:radial-gradient(80% 70% at 50% 40%, ${p.c2}${Math.round(str*255).toString(16).padStart(2,"0")}, transparent 70%), var(--char)`;
 function sims(p,k=6){const n=new Set(Object.values(p.notas).flat());return DATA.filter(x=>x.id!==p.id).map(x=>{let s=0;x.acordes.forEach((a,i)=>{const j=p.acordes.indexOf(a);if(j>=0)s+=(6-i)+(6-j)});Object.values(x.notas).flat().forEach(t=>{if(n.has(t))s+=1});return [s,x]}).sort((a,b)=>b[0]-a[0]).slice(0,k).map(z=>z[1])}
 
@@ -797,6 +896,7 @@ function renderHero(){
        <div class="cta-row">
          <button class="btn btn-gold" style="flex:1" data-open="${p.id}">Detalles de Pedido</button>
          <button class="heart ${wish.includes(p.id)?"on":""}" data-wish="${p.id}" aria-label="Guardar en lista de deseos">${heartSvg}</button>
+         <button class="heart sh" data-share="${p.id}" aria-label="Compartir ${esc(p.nombre)}">${shareSvg}</button>
        </div>
      </div>
    </article>`).join("");
@@ -821,6 +921,7 @@ function card(p,i){
   return `<article class="card" style="--i:${Math.min(i||0,20)}">
    <button class="pic" style="${tint(p)}" data-open="${p.id}" aria-label="Ver ${esc(p.nombre)}">${ph(p)}<span class="badge">${esc(p.concentracion)}</span><span class="stockb">En stock</span></button>
    <button class="heart ${wish.includes(p.id)?"on":""}" data-wish="${p.id}" aria-label="Guardar en lista de deseos">${heartSvg}</button>
+   <button class="share-btn" data-share="${p.id}" aria-label="Compartir ${esc(p.nombre)}">${shareSvg}</button>
    <div class="info">
      <span class="house">${esc(p.marca)}</span>
      <span class="name">${esc(p.nombre)}</span>
@@ -866,7 +967,7 @@ function renderDetail(){
   const fmtRow=f=>`<button class="fmt ${selFmt===f?"on":""}" data-fmt="${f}"><span class="rd"></span><span><b>${esc(fmtName(p,f))}</b><span>${sub(f)}</span></span><span class="num">${bs(price(p,f))}</span></button>`;
   const fs=fmtList(p);
   $("#dBody").innerHTML=`
-   <div class="d-hero" style="${tint(p,.5)}">${stage(p)}</div>
+   <div class="d-hero" style="${tint(p,.5)}">${stage(p)}<button class="zoom-btn shr" data-share="${p.id}">${shareSvg.replace("<svg",'<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"')}Compartir</button><button class="zoom-btn" data-zoom="${p.id}">⤢ Ver en grande</button></div>
    <div class="d-title">
      <div class="tags"><span class="badge gold">En stock</span><span class="badge">${GENDERS[p.g]}</span><span class="badge">${esc(p.concentracion)}</span></div>
      <h2>${esc(p.nombre)}</h2>
@@ -882,7 +983,8 @@ function renderDetail(){
      <button class="btn btn-gold btn-block" id="addCart">🛒 Agregar al carrito</button>
      <button class="btn btn-wa btn-block" id="buyNow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Detalles de Pedido por WhatsApp</button>
      <button class="btn btn-ghost btn-block" id="wishD">${wish.includes(p.id)?"En tu lista de deseos":"Guardar y avisarme si baja de precio"}</button>
-   </div>`:`<p class="notice">Consulta precio y formatos por WhatsApp.</p><div class="stack"><a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="${waLink(`Hola, quiero el precio de ${p.nombre} (${p.marca}).`)}">Consultar por WhatsApp</a></div>`}</div>
+     <button class="btn btn-ghost btn-block" data-share="${p.id}">Compartir este perfume con alguien</button>
+   </div>`:`<p class="notice">Consulta precio y formatos por WhatsApp.</p><div class="stack"><a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="${waLink(`Hola, quiero el precio de ${p.nombre} (${p.marca}).`)}">Consultar por WhatsApp</a><button class="btn btn-ghost btn-block" data-share="${p.id}">Compartir este perfume</button></div>`}</div>
    <div class="d-sec"><span class="eyebrow">Perfiles similares</span><div class="similar">${sims(p).map(x=>`<button class="mini" data-open="${x.id}"><div class="pic" style="${tint(x)}">${ph(x)}</div><div><small>${esc(x.marca)}</small>${esc(x.nombre)}</div></button>`).join("")}</div></div>
    <p class="notice">Ficha basada en <a href="${p.parfumo}" target="_blank" rel="noopener" style="color:var(--gold)">Parfumo</a>.</p>`;
   requestAnimationFrame(()=>startStage($("#dBody .stage")));
@@ -911,14 +1013,14 @@ function bottleMsg(t){
 function addToCart(id,fmt,qty){
   if(!fmt)return;const ex=cart.find(l=>l.id===id&&l.fmt===fmt);
   ex?ex.qty+=qty:cart.push({id,fmt,qty});
-  saveCart();toast(`🛒 ${byId(id).nombre} · ${fmtName(byId(id),fmt)} agregado al carrito`);
+  saveCart();buzz(14);toast(`🛒 ${byId(id).nombre} · ${fmtName(byId(id),fmt)} agregado al carrito`);
   const f=$("#fab");f.classList.remove("bump");void f.offsetWidth;f.classList.add("bump");
 }
 function saveCart(){store.set("cart2",cart);updateFab();if($("#cart").classList.contains("open"))renderCart()}
 function updateFab(){$("#fabCnt").textContent=cart.reduce((a,l)=>a+l.qty,0);$("#fabWish").textContent=wish.length}
 function toggleWish(id){
   wish.includes(id)?wish=wish.filter(x=>x!==id):wish.push(id);
-  store.set("wish",wish);updateFab();
+  store.set("wish",wish);updateFab();buzz(10);
   document.querySelectorAll(`[data-wish="${id}"]`).forEach(b=>b.classList.toggle("on",wish.includes(id)));
   toast(wish.includes(id)?"Guardado. Te avisamos cuando entre en descuento":"Quitado de tu lista de deseos");
   if(current&&current.id===id&&$("#detail").classList.contains("open"))renderDetailKeep();
@@ -941,9 +1043,11 @@ function renderCart(){
     B.innerHTML=wish.filter(byId).map(id=>{const p=byId(id),fi=fromInfo(p);return `<div class="line"><div class="pic" style="${tint(p)}">${ph(p)}</div><div class="t"><b>${esc(p.nombre)}</b><span>${esc(p.marca)}${fi?" · desde "+bs(fi.v):""}</span><div class="row"><button class="btn btn-ghost" style="min-height:40px;padding:8px 14px" data-open="${p.id}">Ver formatos</button><button class="rm" data-wish="${p.id}">Quitar</button></div></div></div>`}).join("")+`
      <div class="wish-alert"><p><b>Aviso de descuento</b><br><span style="color:var(--mute)">Envía tu lista y Mr. Borth te escribe por WhatsApp cuando alguno de estos perfumes baje de precio.</span></p>
      <div class="field" id="fWN"><label for="wName">Tu nombre</label><input id="wName" value="${esc(client.nombre)}" autocomplete="name"><span class="msg">Escribe tu nombre para registrarte.</span></div>
-     <a class="btn btn-wa btn-block" id="wishSend" href="#" target="_blank" rel="noopener">Activar aviso por WhatsApp</a></div>`;
+     <a class="btn btn-wa btn-block" id="wishSend" href="#" target="_blank" rel="noopener">Activar aviso por WhatsApp</a>
+     <button class="btn btn-ghost btn-block" id="wishShare">Compartir mi lista de deseos</button></div>`;
     const upd=()=>{client.nombre=$("#wName").value;store.set("client",client);$("#wishSend").href=waLink(wishMessage())};
     $("#wName").addEventListener("input",upd);upd();
+    $("#wishShare").addEventListener("click",shareWish);
     $("#wishSend").addEventListener("click",e=>{if(!client.nombre.trim()){e.preventDefault();$("#fWN").classList.add("err")}});
   }else renderForm(B);
 }
@@ -1112,11 +1216,142 @@ function openReel(base){
   askMotion();
 }
 function closeReel(){stopMotion();document.querySelectorAll("#rs .stage.play").forEach(stopStage);goldOff($("#rs"));$("#reel").hidden=true;$("#rs").innerHTML="";if(fillIO){fillIO.disconnect();actIO.disconnect()}if(!document.querySelector(".sheet.open"))document.body.classList.remove("locked")}
+/* ============ COMPARTIR: perfume, tienda o lista de deseos (siempre disponible) ============ */
+const SHOP_URL=(()=>{try{if(/^https?:$/.test(location.protocol))return location.origin+location.pathname}catch(e){}return "https://mr-borth-luxury-parfums.netlify.app/"})();
+const pUrl=p=>p?SHOP_URL+"#"+p.id:SHOP_URL;
+function loadImg(src){return new Promise((ok,ko)=>{const i=new Image();i.decoding="async";i.onload=()=>ok(i);i.onerror=ko;i.src=src})}
+function rrect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function wrapText(c,t,x,y,maxW,lh,maxL){const w=String(t).split(/\s+/);let l="",n=0;for(let i=0;i<w.length;i++){const k=l?l+" "+w[i]:w[i];if(c.measureText(k).width>maxW&&l){c.fillText(l,x,y+n*lh);n++;l=w[i];if(n===maxL-1){const r=w.slice(i).join(" ");let s=r;while(c.measureText(s+"…").width>maxW&&s.length>1)s=s.slice(0,-1);c.fillText(s===r?s:s+"…",x,y+n*lh);return n+1}}else l=k}if(l){c.fillText(l,x,y+n*lh);n++}return n}
+/* tarjeta de publicidad 1080×1350 con el frasco recortado: lista para historias, estados y redes */
+const CARD_CACHE={};
+async function shareCard(p){
+  const key=p?p.id:"_shop";if(CARD_CACHE[key])return CARD_CACHE[key];
+  try{await document.fonts.ready}catch(e){}
+  const W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;const c=cv.getContext("2d");
+  const c1=p?p.c1:"#3a2c10",c2=p?p.c2:"#7d5a2e";
+  let g=c.createRadialGradient(W/2,H*.38,40,W/2,H*.42,H*.8);g.addColorStop(0,c2);g.addColorStop(.45,c1);g.addColorStop(1,"#0b0a08");c.fillStyle=g;c.fillRect(0,0,W,H);
+  g=c.createRadialGradient(W/2,H*.4,10,W/2,H*.4,W*.5);g.addColorStop(0,"rgba(255,236,196,.30)");g.addColorStop(1,"rgba(255,236,196,0)");c.fillStyle=g;c.fillRect(0,0,W,H);
+  c.strokeStyle="rgba(232,204,142,.55)";c.lineWidth=3;rrect(c,28,28,W-56,H-56,34);c.stroke();
+  try{const lg=await loadImg("logo-mark.png");const lh=96,lw=lg.width*lh/lg.height;c.drawImage(lg,70,64,lw,lh);
+    c.fillStyle="#e8cc8e";c.font='italic 44px "Bodoni Moda",Georgia,serif';c.textBaseline="middle";c.fillText("Mr. Borth",86+lw,100);
+    c.fillStyle="#c8a35a";c.font='500 22px "Jost",system-ui,sans-serif';c.fillText("LUXURY PARFUMS",88+lw,140)}catch(e){}
+  c.textBaseline="alphabetic";
+  if(p){
+    let bt=null;try{bt=await loadImg(cutSrc(p))}catch(e){try{bt=await loadImg(rawSrc(p))}catch(e2){}}
+    if(bt){const bh=600,bw=Math.min(760,bt.width*bh/bt.height),bh2=bt.height*bw/bt.width,bx=(W-bw)/2,by=200+(bh-bh2);
+      g=c.createRadialGradient(W/2,by+bh2,4,W/2,by+bh2,bw*.55);g.addColorStop(0,"rgba(0,0,0,.65)");g.addColorStop(1,"rgba(0,0,0,0)");
+      c.save();c.translate(W/2,by+bh2+6);c.scale(1,.12);c.fillStyle=g;c.beginPath();c.arc(0,0,bw*.55,0,7);c.fill();c.restore();
+      /* reflejo sobre el piso */
+      const rh=Math.round(bh2*.35),rc=document.createElement("canvas");rc.width=Math.ceil(bw);rc.height=rh;const r2=rc.getContext("2d");
+      r2.translate(0,bh2);r2.scale(1,-1);r2.drawImage(bt,0,0,bw,bh2);r2.setTransform(1,0,0,1,0,0);
+      r2.globalCompositeOperation="destination-in";const rg=r2.createLinearGradient(0,0,0,rh);rg.addColorStop(0,"rgba(0,0,0,.30)");rg.addColorStop(1,"rgba(0,0,0,0)");r2.fillStyle=rg;r2.fillRect(0,0,rc.width,rh);
+      c.drawImage(rc,bx,by+bh2+2);
+      c.save();c.shadowColor="rgba(0,0,0,.55)";c.shadowBlur=40;c.shadowOffsetY=24;c.drawImage(bt,bx,by,bw,bh2);c.restore()}
+    c.textAlign="center";
+    c.fillStyle="#c8a35a";c.font='500 30px "Jost",system-ui,sans-serif';c.fillText(String(p.marca).toUpperCase()+" · "+p.concentracion.toUpperCase(),W/2,932);
+    c.fillStyle="#f2ecdd";c.font='400 76px "Bodoni Moda",Georgia,serif';const n=wrapText(c,p.nombre,W/2,1012,W-160,80,2);
+    c.fillStyle="#e8cc8e";c.font='italic 38px "Bodoni Moda",Georgia,serif';c.fillText("Te hace sentir "+p.feelW.join(" · "),W/2,1012+n*80+6);
+    const fi=fromInfo(p);
+    if(fi){const t="Desde "+bs(fi.v)+" · "+fi.lbl;c.font='500 34px "DM Mono",monospace';const tw=c.measureText(t).width+70;
+      rrect(c,(W-tw)/2,1150,tw,70,35);c.fillStyle="#c8a35a";c.fill();c.fillStyle="#0c0b09";c.fillText(t,W/2,1197)}
+  }else{
+    c.textAlign="center";
+    try{const lg=await loadImg("logo.png");const lw=620,lh=lg.height*lw/lg.width;c.fillStyle="#f2ecdd";rrect(c,(W-lw-80)/2,250,lw+80,lh+80,30);c.fill();c.drawImage(lg,(W-lw)/2,290,lw,lh)}catch(e){}
+    c.fillStyle="#e8cc8e";c.font='italic 58px "Bodoni Moda",Georgia,serif';c.fillText("Elige tu esencia.",W/2,1000);c.fillText("Define tu presencia.",W/2,1072);
+    c.fillStyle="#f2ecdd";c.font='400 32px "Jost",system-ui,sans-serif';c.fillText("Decants 4 ml y 10 ml · Botellas originales selladas",W/2,1160);
+  }
+  c.textAlign="center";c.fillStyle="#a0977f";c.font='400 26px "Jost",system-ui,sans-serif';c.fillText("Pide por WhatsApp +591 7754 0510 · @mr.borth.parfums",W/2,H-70);
+  const blob=await new Promise(r=>cv.toBlob(r,"image/png"));
+  return CARD_CACHE[key]={blob,url:URL.createObjectURL(blob)};
+}
+function shareText(p){return p?`✨ ${p.nombre} de ${p.marca} en ${CONFIG.marca}. ${p.feel}`:`✨ ${CONFIG.marca}: perfumes originales, decants de 4 ml y 10 ml y botellas selladas. Elige tu esencia. Define tu presencia.`}
+const SH_ICONS={
+  wa:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>',
+  fb:'<svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.8.5-1 1-1h2V2h-3c-3 0-4 2-4 4.2V8H8v3.5h2V22h4V11.5h2.7L17 8Z"/></svg>',
+  tg:'<svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.8c-1 .4-1 1.1-.1 1.4l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8L23 4.9c.3-1.3-.5-1.9-1.5-1.4Z"/></svg>',
+  ln:'<svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
+  dl:'<svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
+  more:'<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
+  img:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
+  zoom:'<svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>'
+};
+let SH_P=null;
 function share(p){
-  let url="";try{if(/^https?:$/.test(location.protocol))url=location.origin+location.pathname+"#"+p.id}catch(e){}
-  const text=`Mira este perfume en ${CONFIG.marca}: ${p.nombre} de ${p.marca}. ${p.feel}`;
-  if(navigator.share){navigator.share({title:p.nombre,text,url:url||undefined}).catch(()=>{});return}
-  window.open("https://wa.me/?text="+encodeURIComponent(text+(url?" "+url:"")),"_blank","noopener");
+  SH_P=p||null;const url=pUrl(p),text=shareText(p),enc=encodeURIComponent,slug=p?p.id:"mr-borth";
+  $("#shTitle").textContent=p?"Compartir "+p.nombre:"Compartir la tienda";
+  $("#shBody").innerHTML=`<div class="sh-prev" id="shPrev"><span class="notice">Preparando imagen…</span></div>
+   <div class="sh-grid">
+     <a href="https://wa.me/?text=${enc(text+" "+url)}" target="_blank" rel="noopener"><span class="ic wa">${SH_ICONS.wa}</span>WhatsApp</a>
+     <a href="https://www.facebook.com/sharer/sharer.php?u=${enc(url)}" target="_blank" rel="noopener"><span class="ic fb">${SH_ICONS.fb}</span>Facebook</a>
+     <a href="https://t.me/share/url?url=${enc(url)}&text=${enc(text)}" target="_blank" rel="noopener"><span class="ic tg">${SH_ICONS.tg}</span>Telegram</a>
+     <button type="button" id="shCopy"><span class="ic">${SH_ICONS.ln}</span>Copiar enlace</button>
+     ${navigator.share?`<button type="button" id="shNative"><span class="ic">${SH_ICONS.img}</span>Enviar imagen</button><button type="button" id="shMore"><span class="ic">${SH_ICONS.more}</span>Más apps</button>`:""}
+     <a id="shDl" download="${slug}-mr-borth.png" href="#"><span class="ic">${SH_ICONS.dl}</span>Guardar imagen</a>
+     ${p?`<a href="${esc(pngSrc(p))}" download="${slug}.png" id="shPng"><span class="ic">${SH_ICONS.zoom}</span>Foto sin fondo</a>`:""}
+   </div>
+   <p class="notice" style="text-align:center">La imagen está lista para estados, historias de Instagram y TikTok.</p>`;
+  openSheet("#shareSheet");$("#shBody").scrollTop=0;
+  $("#shCopy").onclick=()=>{const t=text+" "+url;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Enlace copiado")).catch(()=>{prompt("Copia el enlace:",url)})};
+  const sm=$("#shMore");if(sm)sm.onclick=()=>navigator.share({title:p?p.nombre:CONFIG.marca,text,url}).catch(()=>{});
+  const shp=$("#shPng");if(shp)shp.onclick=e=>{fetch(shp.href,{method:"HEAD"}).then(r=>{if(!r.ok)throw 0}).catch(()=>{e.preventDefault();toast("Foto aún no disponible")})};
+  shareCard(p).then(cd=>{if(SH_P!==p)return;
+    $("#shPrev").innerHTML=`<img src="${cd.url}" alt="Imagen para compartir">`;$("#shDl").href=cd.url;
+    const sn=$("#shNative");if(sn)sn.onclick=()=>{const f=new File([cd.blob],slug+"-mr-borth.png",{type:"image/png"});
+      const data={files:[f],title:p?p.nombre:CONFIG.marca,text:text+" "+url};
+      if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share(data).catch(()=>{});else navigator.share({title:data.title,text,url}).catch(()=>{})};
+  }).catch(()=>{$("#shPrev").innerHTML=`<span class="notice">No se pudo preparar la imagen. Comparte el enlace.</span>`});
+}
+function shareWish(){
+  const ids=wish.filter(byId);if(!ids.length)return;
+  const text=`💛 Mi lista de deseos en ${CONFIG.marca}:\n`+ids.map((id,i)=>{const p=byId(id);return `${i+1}. ${p.nombre} (${p.marca}) ${pUrl(p)}`}).join("\n");
+  if(navigator.share)navigator.share({title:"Mi lista de deseos",text}).catch(()=>{});else window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener");
+}
+
+/* ============ VISOR: foto grande del frasco recortado, girar, pellizcar y compartir ============ */
+let VP=null;
+function openViewer(p){if(!p)return;VP=p;const v=$("#viewer"),i=$("#vImg");
+  v.style.setProperty("--vc",p.c2);$("#vName").textContent=p.nombre+" · "+p.marca;
+  i.onerror=()=>{i.onerror=null;i.src=rawSrc(p)};i.src=cutSrc(p);i.alt=p.nombre+" de "+p.marca;
+  $("#vPng").href=pngSrc(p);$("#vPng").setAttribute("download",p.id+".png");
+  vReset();v.hidden=false;document.body.classList.add("locked")}
+function closeViewer(){$("#viewer").hidden=true;if(!document.querySelector(".sheet.open")&&$("#reel").hidden)document.body.classList.remove("locked")}
+let VS={s:1,x:0,y:0,ry:0};
+function vApply(){const i=$("#vImg");i.style.setProperty("--s",VS.s);i.style.setProperty("--x",VS.x+"px");i.style.setProperty("--y",VS.y+"px");i.style.setProperty("--ry",VS.ry+"deg")}
+function vReset(){VS={s:1,x:0,y:0,ry:0};vApply()}
+function initViewer(){
+  const st=$("#vStage"),pts=new Map();let last=null,pinch0=0,s0=1,lastTap=0;
+  $("#vClose").onclick=closeViewer;$("#vShare").onclick=()=>{closeViewer();share(VP)};
+  $("#vOpen").onclick=()=>{closeViewer();openDetail(VP.id)};
+  st.addEventListener("pointerdown",e=>{st.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);st.classList.add("drag");
+    if(pts.size===2){const [a,b]=[...pts.values()];pinch0=Math.hypot(a[0]-b[0],a[1]-b[1]);s0=VS.s}last=[e.clientX,e.clientY];
+    const now=Date.now();if(now-lastTap<300&&pts.size===1){VS.s=VS.s>1?1:2.2;VS.x=VS.y=0;vApply()}lastTap=now});
+  st.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;pts.set(e.pointerId,[e.clientX,e.clientY]);
+    if(pts.size===2){const [a,b]=[...pts.values()];VS.s=Math.max(1,Math.min(4,s0*Math.hypot(a[0]-b[0],a[1]-b[1])/pinch0));vApply();return}
+    const dx=e.clientX-last[0],dy=e.clientY-last[1];last=[e.clientX,e.clientY];
+    if(VS.s>1){VS.x+=dx;VS.y+=dy}else VS.ry=Math.max(-35,Math.min(35,VS.ry+dx*.4));vApply()});
+  const up=e=>{pts.delete(e.pointerId);if(!pts.size){st.classList.remove("drag");if(VS.s<=1){VS.ry=0;VS.x=VS.y=0;vApply()}}};
+  st.addEventListener("pointerup",up);st.addEventListener("pointercancel",up);
+  st.addEventListener("wheel",e=>{e.preventDefault();VS.s=Math.max(1,Math.min(4,VS.s*(e.deltaY<0?1.12:.89)));if(VS.s===1)VS.x=VS.y=0;vApply()},{passive:false});
+}
+
+/* ============ HOJAS: deslizar hacia abajo para cerrar ============ */
+function initSheetDrag(){
+  document.querySelectorAll(".sheet").forEach(sh=>{
+    const head=[sh.querySelector(".grab"),sh.querySelector(".sheet-head")];let y0=null,dy=0;
+    head.forEach(h=>{if(!h)return;
+      h.addEventListener("touchstart",e=>{if(e.target.closest("button,a"))return;y0=e.touches[0].clientY;dy=0;sh.classList.add("dragging")},{passive:true});
+      h.addEventListener("touchmove",e=>{if(y0==null)return;dy=Math.max(0,e.touches[0].clientY-y0);sh.style.transform=`translateY(${dy}px)`},{passive:true});
+      h.addEventListener("touchend",()=>{if(y0==null)return;sh.classList.remove("dragging");sh.style.transform="";if(dy>90)closeSheets();y0=null})});
+  });
+}
+
+/* ============ TARJETAS: inclinación 3D al mover el mouse ============ */
+function initTilt(){
+  if(RM||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;
+  const g=$("#grid");
+  g.addEventListener("pointermove",e=>{const c=e.target.closest(".card");if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.classList.add("tilt");c.style.transform=`perspective(800px) rotateX(${(-y*7).toFixed(2)}deg) rotateY(${(x*9).toFixed(2)}deg) translateY(-3px)`});
+  g.addEventListener("pointerout",e=>{const c=e.target.closest(".card");if(c&&!c.contains(e.relatedTarget)){c.classList.remove("tilt");c.style.transform=""}});
 }
 
 /* ============ MOVIMIENTO: PUNTERO Y GIROSCOPIO ============ */
@@ -1216,18 +1451,22 @@ function quizMsg(F){
 }
 
 /* ============ HOJAS, EVENTOS, AVISOS ============ */
-function openSheet(s){document.querySelectorAll(".sheet.open").forEach(x=>{if(x!==$(s)){x.classList.remove("open");if(x.id==="detail")stopStage(x.querySelector(".stage"))}});$(s).classList.add("open");$("#scrim").classList.add("open");document.body.classList.add("locked")}
+function openSheet(s){if(s!=="#shareSheet")document.querySelectorAll(".sheet.open").forEach(x=>{if(x!==$(s)){x.classList.remove("open");if(x.id==="detail")stopStage(x.querySelector(".stage"))}});$(s).classList.add("open");$("#scrim").classList.add("open");document.body.classList.add("locked")}
 function closeSheets(){document.querySelectorAll(".sheet.open").forEach(x=>x.classList.remove("open"));stopStage($("#dBody .stage"));$("#scrim").classList.remove("open");if($("#reel").hidden)document.body.classList.remove("locked");try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+function closeShare(){$("#shareSheet").classList.remove("open");if(!document.querySelector(".sheet.open")){$("#scrim").classList.remove("open");if($("#reel").hidden)document.body.classList.remove("locked")}}
 function openCart(tab){cartTab=tab||cartTab;renderCart();openSheet("#cart");$("#cBody").scrollTop=0}
 let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2200)}
 
 document.addEventListener("click",e=>{
   if(e.target.closest("#rs [data-act]"))return;
-  const stg=e.target.closest(".stage");if(stg&&!e.target.closest("button,a")){toggleStage(stg);return}
+  const stg=e.target.closest(".stage");if(stg&&!e.target.closest("button,a")){if(e.detail===2&&stg.closest(".d-hero")){stopStage(stg);openViewer(byId(stg.dataset.st));return}toggleStage(stg);return}
   const xo=e.target.closest("[data-x]");if(xo){autoAdvice(xo.dataset.x);return}
   const go=e.target.closest(".steps [data-go]");if(go){const g=go.dataset.go;if(g==="catalogo")$("#catalogo").scrollIntoView({behavior:RM?"auto":"smooth"});else openCart(g);return}
-  const w=e.target.closest("[data-wish]");if(w){toggleWish(w.dataset.wish);return}
+  const sh=e.target.closest("[data-share]");if(sh){share(byId(sh.dataset.share));return}
+  const zm=e.target.closest("[data-zoom]");if(zm){openViewer(byId(zm.dataset.zoom));return}
+  const w=e.target.closest("[data-wish]");if(w){toggleWish(w.dataset.wish);w.classList.remove("pop");void w.offsetWidth;w.classList.add("pop");return}
   const o=e.target.closest("[data-open]");if(o){openDetail(o.dataset.open);return}
+  if(e.target.closest("#shareSheet [data-close]")){closeShare();return}
   if(e.target.closest("[data-close]")){closeSheets();return}
   const fam=e.target.closest("[data-fam]");if(fam){filter.fam=filter.fam===fam.dataset.fam?null:fam.dataset.fam;renderFilters();renderGrid(1);$("#catalogo").scrollIntoView({behavior:"smooth"});return}
   const gn=e.target.closest("[data-gen]");if(gn){filter.g=gn.dataset.gen||null;renderFilters();renderGrid(1);return}
@@ -1243,9 +1482,13 @@ document.addEventListener("click",e=>{
   if(e.target.closest("#wishD")){if(!wish.includes(current.id))toggleWish(current.id);return}
 });
 $("#scrim").addEventListener("click",closeSheets);
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(document.querySelector(".sheet.open"))closeSheets();else if(!$("#reel").hidden)closeReel()}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("#viewer").hidden)closeViewer();else if($("#shareSheet").classList.contains("open"))closeShare();else if(document.querySelector(".sheet.open"))closeSheets();else if(!$("#reel").hidden)closeReel()}
   if(!$("#reel").hidden&&!document.querySelector(".sheet.open")&&(e.key==="ArrowDown"||e.key==="ArrowUp")){e.preventDefault();const rs=$("#rs");rs.scrollBy({top:(e.key==="ArrowDown"?1:-1)*rs.clientHeight,behavior:RM?"auto":"smooth"})}});
 $("#fab").addEventListener("click",()=>openCart());
+$("#shareTop").addEventListener("click",()=>share(null));
+$("#shareShop").addEventListener("click",()=>share(null));
+$("#dShare").addEventListener("click",()=>current&&share(current));
+initViewer();initSheetDrag();initTilt();
 $("#adviceBtn").addEventListener("click",()=>openCart("datos"));
 $("#quizBtn").addEventListener("click",()=>openQuiz(0));
 $("#reelBtn").addEventListener("click",()=>openReel(LIST.length?LIST:DATA));

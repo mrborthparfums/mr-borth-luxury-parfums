@@ -1,5 +1,5 @@
 // Mr. Borth Tienda — caché para abrir rápido y sin conexión
-const V='mb-tienda-v11';
+const V='mb-tienda-v12';
 const CORE=['./','index.html','manifest.json','catalogo.json','icons/icon-192.png','logo-mark.png','logo.png'];
 // Fotos de los perfumes recortadas sin fondo (img/<id>.webp): la lista sale del propio catálogo (campo "img"),
 // así siempre coincide con los perfumes publicados. Se guardan en segundo plano sin frenar la instalación.

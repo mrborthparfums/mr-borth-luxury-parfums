@@ -15,6 +15,7 @@ PRECIOS (actualizado 24/11/2026)
 - Botellas selladas de las ofertas Seduction: precio AHORA + 250 Bs.
 - Botellas a pedido (campo usd): dólar del día × usd + 250 Bs (campo extra).
 - Decants fuera del sistema: +100 Bs sobre el precio anterior.
+- Perfumes de nicho (catálogo nov 2026): precio del catálogo + 70 USD, convertido con el dólar del día (incluye 7 que también están en el Sistema Pro, por decisión de Mr. Borth). Agotados y sin precio: 'a consultar'.
 
 DÓLAR DEL DÍA
 La tienda consulta cada día el dólar oficial de Bolivia (bo.dolarapi.com) y recalcula los precios en Bs de las botellas a pedido (precio en USD, que ya incluye los $15, × dólar del día). Decants y botellas en stock mantienen su precio fijo en Bs. Si no hay conexión usa el último valor guardado o el respaldo 11,69 (se cambia en index.html, línea TC_FALLBACK).

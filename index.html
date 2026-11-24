@@ -163,6 +163,7 @@ footer.company{margin-top:44px;border-top:1px solid var(--line);padding-block:36
 /* Carrito flotante */
 .fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:12px 18px 12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.55);font-weight:500}
 .fab svg{width:22px;height:22px}
+.fab{transition:transform .35s ease,opacity .35s ease}.fab.tuck{transform:translateY(170%);opacity:0;pointer-events:none}
 .fab-lbl{font-size:.9rem;letter-spacing:.02em}
 .fab .cnt{background:var(--ink);color:var(--gold-hi);font-family:var(--f-mono);font-size:.78rem;min-width:24px;height:24px;border-radius:99px;display:grid;place-items:center;padding:0 6px}
 .fab .wcnt{display:flex;align-items:center;gap:3px;font-family:var(--f-mono);font-size:.78rem;border-left:1px solid color-mix(in srgb,var(--ink) 30%,transparent);padding-left:10px}
@@ -805,7 +806,7 @@ const heartSvg=`<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.
 /* ============ PRECIOS, FORMATOS Y OFERTAS ============ */
 function fmtList(p){return [...p.decants.map((d,i)=>"d"+i),...p.botellas.map((b,i)=>"b"+i)]}
 function fmtInfo(p,f){const i=+f.slice(1);return f[0]==="d"?p.decants[i]:p.botellas[i]}
-function fmtName(p,f){const x=fmtInfo(p,f);return x?(f[0]==="d"?"Decant ":"Botella sellada ")+x.ml:"—"}
+function fmtName(p,f){const x=fmtInfo(p,f);if(!x)return "—";if(f[0]==="d")return "Decant "+x.ml;const m=(x.ml||"").trim();return !m||/^botella/i.test(m)?"Botella sellada":(/^\d/.test(m)?"Botella sellada "+m:m)}
 const isDecant=f=>f[0]==="d";
 function price(p,f){const x=fmtInfo(p,f);return x?x.bs:0}
 function fromInfo(p){
@@ -826,7 +827,7 @@ async function loadTC(){
   if(c&&c.v>5){TC=c.v;TC_INFO={...c,old:(c.f||c.d||"").slice(0,10)<d}}
 }
 function applyTC(){
-  DATA.forEach(p=>p.botellas.forEach(b=>{if(b.usd)b.bs=Math.round(b.usd*TC)}));
+  DATA.forEach(p=>p.botellas.forEach(b=>{if(b.usd)b.bs=Math.round(b.usd*TC)+(b.extra||0)}));
   const f=TC_INFO?new Date((TC_INFO.f||TC_INFO.d).slice(0,10)+"T12:00:00").toLocaleDateString("es-BO",{day:"2-digit",month:"2-digit",year:"numeric"}):null;
   $("#tcLine").innerHTML=TC_INFO?`Dólar oficial del ${f}${TC_INFO.old?" (último disponible)":""}: <b>Bs ${TC.toFixed(2).replace(".",",")}</b> · todos los perfumes en stock`:`Dólar del día <b>Bs ${TC.toFixed(2).replace(".",",")}</b> · todos los perfumes en stock`;
 }
@@ -1536,5 +1537,13 @@ Promise.all([fetch("catalogo.json").then(r=>r.json()),loadTC()]).then(([d])=>{
   const h=location.hash.slice(1);if(h&&byId(h))openDetail(h);
 }).catch(()=>{$("#grid").innerHTML=`<div class="empty">No se pudo cargar el catálogo. Recarga la página.</div>`});
 </script>
-<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));</script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+/* el botón flotante del carrito se esconde mientras tapa el precio o los botones de la portada */
+(function(){let q=0;function chk(){q=0;const f=document.getElementById("fab");if(!f)return;const zone=innerHeight-110;let hit=false;
+document.querySelectorAll(".slide .price-row,.slide .cta-row").forEach(e=>{const r=e.getBoundingClientRect();if(r.bottom>zone&&r.top<innerHeight&&r.height)hit=true});
+f.classList.toggle("tuck",hit)}
+function req(){if(!q){q=1;requestAnimationFrame(chk)}}
+addEventListener("scroll",req,{passive:true});addEventListener("resize",req);document.addEventListener("touchmove",req,{passive:true});
+setInterval(req,700)})();
+</script>
 </body></html>
